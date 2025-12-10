@@ -1,136 +1,620 @@
-<section class="construction-carousel-section">
-        <div class="carousel-container">
-            <button class="carousel-arrow carousel-arrow-left">
-                <div class="arrow-icon arrow-left"></div>
-            </button>
-            
-            <div class="carousel-wrapper">
-                <!-- Image Box 1 -->
-                <div class="image-box">
-                    <div class="image-box-inner">
-                        <img src="https://valenationallc.comwp-content/uploads/2024/09/4289395.jpg.webp" alt="Residential Construction" class="image-box-img">
-                        <div class="image-box-content">
-                            <h3 class="image-box-title">Residential Materials</h3>
-                            <p class="image-box-description">Premium-quality materials for building durable, safe, and modern homes.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Image Box 2 -->
-                <div class="image-box">
-                    <div class="image-box-inner">
-                        <img src="https://valenationallc.comwp-content/uploads/2024/09/RoofingInstall2.jpg" alt="Commercial Development" class="image-box-img">
-                        <div class="image-box-content">
-                            <h3 class="image-box-title">Commercial Project Materials</h3>
-                            <p class="image-box-description">Strong, high-grade products designed to support offices, retail spaces, and large commercial structures.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Image Box 3 -->
-                <div class="image-box">
-                    <div class="image-box-inner">
-                        <img src="https://valenationallc.comwp-content/uploads/2024/09/Homeinteriorrenovation-GettyImages-892372566-cc34a0e66c7f44bb8665f4d6088676da.jpg.webp" alt="Interior Design and Renovation" class="image-box-img">
-                        <div class="image-box-content">
-                            <h3 class="image-box-title">Renovation & Interior Materials</h3>
-                            <p class="image-box-description">A complete range of finishing and remodeling products to transform and upgrade any space with style and durability.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Image Box 4 -->
-                <div class="image-box">
-                    <div class="image-box-inner">
-                        <img src="https://valenationallc.comwp-content/uploads/2024/09/pexels-skitterphoto-1388944.jpg" alt="Project Planning & Management" class="image-box-img">
-                        <div class="image-box-content">
-                            <h3 class="image-box-title">Strengthening Foundations, Empowering Builders</h3>
-                            <p class="image-box-description">
-                               Built with quality and precision, guiding you from planning to completion, with support that builds trust.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Mouse-Follow Background Effects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <button class="carousel-arrow carousel-arrow-right">
-                <div class="arrow-icon arrow-right"></div>
-            </button>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Control Panel */
+        .control-panel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .control-panel h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .effect-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .effect-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .effect-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .effect-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .slider-container {
+            margin: 15px 0;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .slider {
+            width: 100%;
+            height: 4px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+
+        .toggle-label {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Canvas Container */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Content Styles */
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 40px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #fff 30%, #aaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #aaa;
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Instructions */
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            width: 300px;
+            z-index: 1000;
+        }
+
+        .instructions h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .instructions p {
+            color: #aaa;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <h3>🎨 Background Effects Control</h3>
+        
+        <div class="effect-buttons">
+            <button class="effect-btn active" data-effect="particle-wave">Particle Wave</button>
+            <button class="effect-btn" data-effect="gradient-ripple">Gradient Ripple</button>
+            <button class="effect-btn" data-effect="neon-trails">Neon Trails</button>
+            <button class="effect-btn" data-effect="magnetic-field">Magnetic Field</button>
+            <button class="effect-btn" data-effect="flow-field">Flow Field</button>
+            <button class="effect-btn" data-effect="geometric-pulse">Geometric Pulse</button>
         </div>
-    </section>
+
+        <div class="slider-container">
+            <div class="slider-label">
+                <span>Effect Intensity</span>
+                <span id="intensity-value">50%</span>
+            </div>
+            <input type="range" min="1" max="100" value="50" class="slider" id="intensity-slider">
+        </div>
+
+        <div class="slider-container">
+            <div class="slider-label">
+                <span>Particle Count</span>
+                <span id="particle-value">100</span>
+            </div>
+            <input type="range" min="10" max="500" value="100" class="slider" id="particle-slider">
+        </div>
+
+        <div class="slider-container">
+            <div class="slider-label">
+                <span>Mouse Influence</span>
+                <span id="influence-value">80%</span>
+            </div>
+            <input type="range" min="0" max="100" value="80" class="slider" id="influence-slider">
+        </div>
+
+        <div class="toggle-container">
+            <span class="toggle-label">Trail Effect</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="trail-toggle" checked>
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+
+        <div class="toggle-container">
+            <span class="toggle-label">Color Cycling</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="color-toggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h1>Interactive Mouse-Follow Effects</h1>
+        <p class="subtitle">
+            Experience professional interactive background animations that respond to your cursor movement. 
+            Each effect combines physics simulations with visual aesthetics for a premium experience.
+        </p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Real-time Physics</h3>
+                <p>Advanced physics simulations create natural particle movements and interactions with your cursor.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Interactive Controls</h3>
+                <p>Adjust intensity, particle count, and visual styles in real-time through the control panel.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌈</div>
+                <h3>Dynamic Color Schemes</h3>
+                <p>Automatically cycling color palettes or choose from predefined professional gradients.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions">
+        <h4>💡 How to Use</h4>
+        <p>1. Select an effect from the control panel</p>
+        <p>2. Adjust sliders to customize the appearance</p>
+        <p>3. Move your mouse to interact with the effect</p>
+        <p>4. Toggle features like trails and color cycling</p>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const carouselWrapper = document.querySelector('.carousel-wrapper');
-            const imageBoxes = document.querySelectorAll('.image-box');
-            const prevButton = document.querySelector('.carousel-arrow-left');
-            const nextButton = document.querySelector('.carousel-arrow-right');
+        class InteractiveBackground {
+            constructor() {
+                this.canvas = document.createElement('canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.container = document.getElementById('canvas-container');
+                this.container.appendChild(this.canvas);
+                
+                this.mouse = { x: 0, y: 0, vx: 0, vy: 0, px: 0, py: 0 };
+                this.particles = [];
+                this.effect = 'particle-wave';
+                this.intensity = 0.5;
+                this.particleCount = 100;
+                this.influence = 0.8;
+                this.trailEffect = true;
+                this.colorCycle = false;
+                this.time = 0;
+                this.hue = 0;
+                
+                this.init();
+                this.setupEventListeners();
+                this.createParticles();
+                this.animate();
+            }
             
-            let currentIndex = 0;
+            init() {
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+            }
             
-            // Get the number of items to show based on screen width
-            function getItemsToShow() {
-                if (window.innerWidth <= 768) {
-                    return 1;
-                } else if (window.innerWidth <= 992) {
-                    return 2;
-                } else {
-                    return 3;
+            resize() {
+                this.canvas.width = this.container.clientWidth;
+                this.canvas.height = this.container.clientHeight;
+                this.createParticles();
+            }
+            
+            handleMouseMove(e) {
+                const rect = this.canvas.getBoundingClientRect();
+                this.mouse.px = this.mouse.x;
+                this.mouse.py = this.mouse.y;
+                this.mouse.x = e.clientX - rect.left;
+                this.mouse.y = e.clientY - rect.top;
+                this.mouse.vx = this.mouse.x - this.mouse.px;
+                this.mouse.vy = this.mouse.y - this.mouse.py;
+            }
+            
+            createParticles() {
+                this.particles = [];
+                for (let i = 0; i < this.particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: Math.random() * 2 - 1,
+                        vy: Math.random() * 2 - 1,
+                        size: Math.random() * 3 + 1,
+                        color: this.getParticleColor(i),
+                        angle: Math.random() * Math.PI * 2,
+                        life: 1,
+                        connections: []
+                    });
                 }
             }
             
-            // Calculate the width of each item
-            function updateItemWidth() {
-                const itemsToShow = getItemsToShow();
-                const containerWidth = document.querySelector('.carousel-container').offsetWidth;
-                const itemWidth = containerWidth / itemsToShow;
+            getParticleColor(index) {
+                if (this.colorCycle) {
+                    const hue = (this.hue + index * 10) % 360;
+                    return `hsl(${hue}, 70%, 60%)`;
+                }
                 
-                imageBoxes.forEach(box => {
-                    box.style.flex = `0 0 ${itemWidth}px`;
+                const schemes = {
+                    'particle-wave': `hsl(${200 + Math.sin(index * 0.1) * 30}, 70%, 60%)`,
+                    'gradient-ripple': `hsl(${240 + Math.sin(index * 0.05) * 20}, 80%, 65%)`,
+                    'neon-trails': `hsl(${300 + Math.cos(index * 0.1) * 60}, 100%, 70%)`,
+                    'magnetic-field': `hsl(${180 + Math.sin(index * 0.08) * 40}, 90%, 60%)`,
+                    'flow-field': `hsl(${120 + Math.cos(index * 0.07) * 50}, 75%, 65%)`,
+                    'geometric-pulse': `hsl(${280 + Math.sin(index * 0.12) * 80}, 85%, 55%)`
+                };
+                
+                return schemes[this.effect] || `hsl(200, 70%, 60%)`;
+            }
+            
+            updateParticles() {
+                this.time += 0.01;
+                this.hue = (this.hue + 0.5) % 360;
+                
+                // Clear with trail effect
+                if (this.trailEffect) {
+                    this.ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+                    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                } else {
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                }
+                
+                // Update each particle based on selected effect
+                this.particles.forEach((p, i) => {
+                    // Store previous position
+                    p.px = p.x;
+                    p.py = p.y;
+                    
+                    // Apply effect-specific behavior
+                    switch(this.effect) {
+                        case 'particle-wave':
+                            p.angle += 0.02;
+                            p.vx = Math.sin(p.angle + i * 0.1) * 0.5;
+                            p.vy = Math.cos(p.angle + i * 0.05) * 0.5;
+                            break;
+                            
+                        case 'gradient-ripple':
+                            const dx = p.x - this.mouse.x;
+                            const dy = p.y - this.mouse.y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+                            const force = Math.sin(distance * 0.01 - this.time) * 0.5;
+                            p.vx += (dx / distance) * force;
+                            p.vy += (dy / distance) * force;
+                            break;
+                            
+                        case 'neon-trails':
+                            p.vx += Math.sin(this.time + i) * 0.1;
+                            p.vy += Math.cos(this.time + i) * 0.1;
+                            break;
+                            
+                        case 'magnetic-field':
+                            const angle = Math.atan2(p.y - this.canvas.height/2, p.x - this.canvas.width/2);
+                            p.vx = Math.cos(angle + this.time) * 0.3;
+                            p.vy = Math.sin(angle + this.time) * 0.3;
+                            break;
+                            
+                        case 'flow-field':
+                            const noiseX = Math.sin(p.x * 0.01 + this.time);
+                            const noiseY = Math.cos(p.y * 0.01 + this.time);
+                            p.vx = noiseX * 0.2;
+                            p.vy = noiseY * 0.2;
+                            break;
+                            
+                        case 'geometric-pulse':
+                            const pulse = Math.sin(this.time + i * 0.05) * 2;
+                            p.vx = Math.cos(i * 0.1) * pulse * 0.1;
+                            p.vy = Math.sin(i * 0.1) * pulse * 0.1;
+                            break;
+                    }
+                    
+                    // Apply mouse influence
+                    if (this.mouse.x && this.mouse.y) {
+                        const dx = this.mouse.x - p.x;
+                        const dy = this.mouse.y - p.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        const maxDist = 200 * this.influence;
+                        
+                        if (distance < maxDist) {
+                            const force = (maxDist - distance) / maxDist;
+                            const angle = Math.atan2(dy, dx);
+                            p.vx += Math.cos(angle) * force * this.intensity * 2;
+                            p.vy += Math.sin(angle) * force * this.intensity * 2;
+                        }
+                    }
+                    
+                    // Apply velocity and bounds
+                    p.vx *= 0.95;
+                    p.vy *= 0.95;
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    
+                    // Bounce off edges
+                    if (p.x < 0 || p.x > this.canvas.width) p.vx *= -0.8;
+                    if (p.y < 0 || p.y > this.canvas.height) p.vy *= -0.8;
+                    p.x = Math.max(0, Math.min(this.canvas.width, p.x));
+                    p.y = Math.max(0, Math.min(this.canvas.height, p.y));
+                    
+                    // Draw particle
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    p.color = this.getParticleColor(i);
+                    this.ctx.fillStyle = p.color;
+                    this.ctx.fill();
+                    
+                    // Draw connections
+                    this.particles.slice(i + 1).forEach((p2, j) => {
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            const opacity = (1 - distance/100) * 0.3 * this.intensity;
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(p.x, p.y);
+                            this.ctx.lineTo(p2.x, p2.y);
+                            this.ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                            this.ctx.lineWidth = 1;
+                            this.ctx.stroke();
+                        }
+                    });
+                });
+            }
+            
+            animate() {
+                this.updateParticles();
+                requestAnimationFrame(() => this.animate());
+            }
+            
+            setupEventListeners() {
+                // Effect buttons
+                document.querySelectorAll('.effect-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.effect-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        this.effect = btn.dataset.effect;
+                        this.createParticles();
+                    });
                 });
                 
-                updateCarousel();
+                // Intensity slider
+                const intensitySlider = document.getElementById('intensity-slider');
+                const intensityValue = document.getElementById('intensity-value');
+                intensitySlider.addEventListener('input', (e) => {
+                    this.intensity = e.target.value / 100;
+                    intensityValue.textContent = `${e.target.value}%`;
+                });
+                
+                // Particle count slider
+                const particleSlider = document.getElementById('particle-slider');
+                const particleValue = document.getElementById('particle-value');
+                particleSlider.addEventListener('input', (e) => {
+                    this.particleCount = parseInt(e.target.value);
+                    particleValue.textContent = e.target.value;
+                    this.createParticles();
+                });
+                
+                // Influence slider
+                const influenceSlider = document.getElementById('influence-slider');
+                const influenceValue = document.getElementById('influence-value');
+                influenceSlider.addEventListener('input', (e) => {
+                    this.influence = e.target.value / 100;
+                    influenceValue.textContent = `${e.target.value}%`;
+                });
+                
+                // Trail toggle
+                document.getElementById('trail-toggle').addEventListener('change', (e) => {
+                    this.trailEffect = e.target.checked;
+                });
+                
+                // Color cycle toggle
+                document.getElementById('color-toggle').addEventListener('change', (e) => {
+                    this.colorCycle = e.target.checked;
+                });
             }
-            
-            // Update carousel position
-            function updateCarousel() {
-                const itemsToShow = getItemsToShow();
-                const containerWidth = document.querySelector('.carousel-container').offsetWidth;
-                const itemWidth = containerWidth / itemsToShow;
-                const translateX = -currentIndex * itemWidth;
-                carouselWrapper.style.transform = `translateX(${translateX}px)`;
-            }
-            
-            // Next slide
-            function nextSlide() {
-                const itemsToShow = getItemsToShow();
-                const maxIndex = imageBoxes.length - itemsToShow;
-                if (currentIndex < maxIndex) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-            }
-            
-            // Previous slide
-            function prevSlide() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
-            }
-            
-            // Event listeners
-            prevButton.addEventListener('click', prevSlide);
-            nextButton.addEventListener('click', nextSlide);
-            
-            // Initialize on load
-            updateItemWidth();
-            
-            // Update on window resize
-            window.addEventListener('resize', function() {
-                // Reset index when screen size changes to avoid issues
-                currentIndex = 0;
-                updateItemWidth();
-            });
+        }
+        
+        // Initialize the background effect when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new InteractiveBackground();
         });
     </script>
+</body>
+</html>
