@@ -3,294 +3,1291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedLink Analytics - Coming Soon</title>
+    <title>MedLink Analytics - Professional Medical Billing Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        :root {
+            --brand-blue: #31ADDE;
+            --brand-black: #000000;
+            --light-blue: #E6F5FC;
+            --dark-blue: #0C7AA7;
+            --gray-100: #F8F9FA;
+            --gray-200: #E9ECEF;
+            --gray-600: #6C757D;
+            --gray-800: #343A40;
+        }
+
         body {
-            background: linear-gradient(135deg, #1a3a5f 0%, #2c5c8a 100%);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .container {
-            max-width: 800px;
-            width: 100%;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .logo {
-            margin-bottom: 30px;
-        }
-        
-        .logo h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 40px;
-            color: #a8d8ff;
-            letter-spacing: 0.5px;
-        }
-        
-        .main-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .main-content p {
-            font-size: 1.2rem;
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
-            margin-bottom: 40px;
-            color: #e6f2ff;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #fff;
+            overflow-x: hidden;
+            background: #111111;
         }
-        
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px 15px;
-            border-radius: 10px;
-            min-width: 100px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .countdown-number {
-            font-size: 2.5rem;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Particle Canvas */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Header */
+        header {
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(49, 173, 222, 0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
             display: block;
         }
-        
-        .countdown-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
-            color: #c2e0ff;
-        }
-        
-        .notify-form {
-            margin-bottom: 30px;
-        }
-        
-        .form-group {
+
+        .nav-links {
             display: flex;
-            max-width: 500px;
-            margin: 0 auto;
+            gap: 2rem;
+            list-style: none;
         }
-        
-        input[type="email"] {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px 0 0 50px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-        }
-        
-        button {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 0 50px 50px 0;
-            background: #4facfe;
-            color: white;
-            font-size: 1rem;
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
         }
-        
-        button:hover {
-            background: #00c6ff;
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
         }
-        
-        .contact-info {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .contact-info p {
-            margin-bottom: 10px;
-            color: #c2e0ff;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            color: white;
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
             font-size: 1.5rem;
-            transition: all 0.3s ease;
+            cursor: pointer;
+            color: var(--brand-blue);
         }
-        
-        .social-links a:hover {
-            color: #4facfe;
-            transform: translateY(-3px);
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            color: #fff;
+            overflow: hidden;
         }
-        
-        .copyright, .copyright b{
-            margin-top: 40px;
-            font-size: 0.9rem;
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--brand-blue), #5BC7F2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--brand-blue);
             color: #fff;
         }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px 20px;
+
+        .btn-primary:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(49, 173, 222, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--brand-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--brand-blue);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: rgba(49, 173, 222, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(49, 173, 222, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #bbb;
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            position: relative;
+            z-index: 10;
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            border: 2px solid rgba(49, 173, 222, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--brand-blue);
+            box-shadow: 0 15px 40px rgba(49, 173, 222, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(49, 173, 222, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--brand-blue);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-card ul li {
+            padding: 0.5rem 0;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-card ul li::before {
+            content: "✓";
+            color: var(--brand-blue);
+            font-weight: bold;
+        }
+
+        .service-card .btn {
+            margin-top: auto;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            background: rgba(49, 173, 222, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            border: 1px solid rgba(49, 173, 222, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--brand-blue);
+            transform: translateY(-5px);
+        }
+
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--brand-blue);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .feature-item p {
+            color: #aaa;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            
-            .logo h1 {
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--brand-blue);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #bbb;
+        }
+
+        .values-list {
+            list-style: none;
+        }
+
+        .values-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--brand-blue);
+            border-radius: 5px;
+        }
+
+        .values-list li strong {
+            color: var(--brand-blue);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .values-list li {
+            color: #bbb;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(49, 173, 222, 0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--brand-blue);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--brand-blue);
+            margin-top: 0.2rem;
+        }
+
+        .info-item div h4 {
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .info-item div p {
+            color: #aaa;
+        }
+
+        .info-item div p a {
+            color: var(--brand-blue);
+            text-decoration: none;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(49, 173, 222, 0.2);
+        }
+
+        .contact-form h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(49, 173, 222, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            transition: border-color 0.3s;
+            color: #fff;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #666;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--brand-blue);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(49, 173, 222, 0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            filter: invert(90%) hue-rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 3rem 2rem 1rem;
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid rgba(49, 173, 222, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--brand-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: #bbb;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--brand-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+        }
+
+        .footer-bottom a {
+            color: var(--brand-blue);
+            text-decoration: none;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            border: 1px solid rgba(49, 173, 222, 0.2);
+        }
+
+        .badge i {
+            font-size: 2rem;
+            color: var(--brand-blue);
+        }
+
+        .badge-text {
+            text-align: left;
+        }
+
+        .badge-text strong {
+            display: block;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .badge-text span {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(17, 17, 17, 0.98);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content,
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
                 font-size: 2.5rem;
             }
-            
-            .tagline {
-                font-size: 1.2rem;
+
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .main-content h2 {
+
+            .section-header h2 {
                 font-size: 2rem;
             }
-            
-            .main-content p {
-                font-size: 1rem;
+
+            .features-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .form-group {
-                flex-direction: column;
-            }
-            
-            input[type="email"] {
-                border-radius: 50px;
-                margin-bottom: 10px;
-            }
-            
-            button {
-                border-radius: 50px;
-            }
+        }
+
+        /* Loading animation */
+        .loading {
+            text-align: center;
+            color: var(--brand-blue);
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .success-message {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .success-message.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <h1>MedLink Analytics</h1>
-            <div class="tagline">Smarter Analytics. Stronger Revenue.</div>
-        </div>
-        
-        <div class="main-content">
-            <h2>Our New Website Is Coming Soon</h2>            
-            <div class="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">00</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Seconds</span>
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#home">
+                <img src="https://medlinkanalytics.com/wp-content/uploads/2025/11/logo-light-medlink.png" alt="MedLink Analytics" class="logo-img">
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#why-us" onclick="closeMenu()">Why Us</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Smarter Analytics. Stronger Revenue.</h1>
+                <p>Transform your medical billing with precision, compliance, and transparency. We maximize your revenue while you focus on patient care.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get Free Revenue Assessment</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
                 </div>
             </div>
-            
-            <div class="contact-info">
-                <p>For immediate inquiries, please contact us at:</p>
-                <p>contact@medlinkanalytics.com</p>
+            <div class="hero-visual">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Clean Claims Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">24-48h</span>
+                        <span class="stat-label">Claim Submission</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">HIPAA Compliant</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Experienced</span>
+                        <span class="stat-label">Expert Team</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="copyright">
-        &copy; 2025 MedLink Analytics. Web Development by <a href="https://sardaralikhamosh.github.io"><b>Sardar Ali Khamosh</b></a>.
+    </section>
+
+    <!-- Trust Badges -->
+    <div style="background: rgba(49, 173, 222, 0.03); padding: 3rem 0;">
+        <div class="trust-badges">
+            <div class="badge">
+                <i class="fas fa-shield-alt"></i>
+                <div class="badge-text">
+                    <strong>HIPAA Compliant</strong>
+                    <span>Secure & Certified</span>
+                </div>
+            </div>
+            <div class="badge">
+                <i class="fas fa-lock"></i>
+                <div class="badge-text">
+                    <strong>Data Security</strong>
+                    <span>Bank-Level Encryption</span>
+                </div>
+            </div>
+            <div class="badge">
+                <i class="fas fa-flag-usa"></i>
+                <div class="badge-text">
+                    <strong>US-Based Team</strong>
+                    <span>Expert Support</span>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <h2>Comprehensive Billing Solutions</h2>
+            <p>End-to-end revenue cycle management tailored to your practice's unique needs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3>Claims Processing</h3>
+                <p>Streamlined submission with 98% first-pass acceptance rate</p>
+                <ul>
+                    <li>Accurate coding (ICD-10, CPT)</li>
+                    <li>Electronic submission</li>
+                    <li>Real-time tracking</li>
+                    <li>Quick turnaround (24-48h)</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <h3>Denial Management</h3>
+                <p>Proactive strategies to prevent and resolve claim denials</p>
+                <ul>
+                    <li>Root cause analysis</li>
+                    <li>Appeal preparation</li>
+                    <li>Trend monitoring</li>
+                    <li>Revenue recovery</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Patient Billing</h3>
+                <p>Clear, compassionate patient financial experience</p>
+                <ul>
+                    <li>Transparent statements</li>
+                    <li>Payment plan options</li>
+                    <li>Patient portal access</li>
+                    <li>Billing inquiries support</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>A/R Management</h3>
+                <p>Accelerate cash flow with expert receivables recovery</p>
+                <ul>
+                    <li>Aging analysis</li>
+                    <li>Follow-up protocols</li>
+                    <li>Collection strategies</li>
+                    <li>Financial reporting</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <h3>Credentialing</h3>
+                <p>Seamless provider enrollment and verification</p>
+                <ul>
+                    <li>Insurance enrollment</li>
+                    <li>License verification</li>
+                    <li>Re-credentialing support</li>
+                    <li>Database maintenance</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>Analytics & Reporting</h3>
+                <p>Data-driven insights for informed decisions</p>
+                <ul>
+                    <li>Custom dashboards</li>
+                    <li>KPI tracking</li>
+                    <li>Revenue forecasting</li>
+                    <li>Actionable insights</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Digital Marketing</h3>
+                <p>Grow your practice with strategic online presence</p>
+                <ul>
+                    <li>SEO optimization</li>
+                    <li>Social media management</li>
+                    <li>Content marketing</li>
+                    <li>Online reputation management</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>System Automation</h3>
+                <p>Streamline workflows with intelligent automation</p>
+                <ul>
+                    <li>Practice management integration</li>
+                    <li>Automated appointment reminders</li>
+                    <li>Electronic health records sync</li>
+                    <li>Workflow optimization</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="section-header">
+            <h2>Why Choose MedLink Analytics</h2>
+            <p>Experience the difference of a partner committed to your financial success</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-user-md"></i>
+                <h3>US-Based Expertise</h3>
+                <p>Certified billing specialists who understand US healthcare regulations</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-rocket"></i>
+                <h3>Advanced Technology</h3>
+                <p>Cutting-edge systems for efficiency, accuracy, and real-time insights</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-handshake"></i>
+                <h3>Transparent Partnership</h3>
+                <p>Clear communication, detailed reporting, no hidden fees</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Revenue Optimization</h3>
+                <p>Proven strategies to increase collections by 20-30%</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-clock"></i>
+                <h3>Fast Turnaround</h3>
+                <p>Claims submitted within 24-48 hours of encounter</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-headset"></i>
+                <h3>Dedicated Support</h3>
+                <p>Your success manager available when you need them</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2>About MedLink Analytics</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Your Trusted Revenue Cycle Partner</h3>
+                <p>At MedLink Analytics, we believe healthcare providers deserve financial peace of mind. Our mission is to remove the complexity and stress from medical billing, allowing you to focus entirely on delivering exceptional patient care.</p>
+                <p>With years of experience and a team of certified billing professionals, we combine deep industry knowledge with cutting-edge technology to maximize your practice's revenue.</p>
+            </div>
+            <div>
+                <ul class="values-list">
+                    <li>
+                        <strong>Integrity</strong>
+                        Honest, ethical practices in every interaction
+                    </li>
+                    <li>
+                        <strong>Excellence</strong>
+                        Commitment to accuracy and continuous improvement
+                    </li>
+                    <li>
+                        <strong>Partnership</strong>
+                        Your success is our success
+                    </li>
+                    <li>
+                        <strong>Compliance</strong>
+                        100% HIPAA compliant, always
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <h2>Get Started Today</h2>
+            <p>Schedule a free revenue assessment and discover how much more you could be collecting</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:contact@medlinkanalytics.com">contact@medlinkanalytics.com</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Office Address</h4>
+                        <p>MedLink Analytics<br>
+                        1500 N Grant St STE 28340<br>
+                        Denver, Colorado CO 80203<br>
+                        United States</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM MST<br>
+                        Saturday - Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="success-message" id="successMessage">
+                    Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                </div>
+                <h3>Request a Consultation</h3>
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name"></label>
+                        <input type="text" id="name" name="name" required placeholder="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"></label>
+                        <input type="email" id="email" name="email" required placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="practice"></label>
+                        <input type="text" id="practice" name="practice" placeholder="Practice Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone"></label>
+                        <input type="tel" id="phone" name="phone" placeholder="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message"></label>
+                        <textarea id="message" name="message" required placeholder="message"></textarea>
+                    </div>
+                    <div class="loading" id="loading">
+                        <i class="fas fa-spinner fa-spin"></i> Sending your message...
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Schedule Free Assessment</button>
+                </form>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.486732916832!2d-104.98758708462406!3d39.73917197944752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c78c4276a76ef%3A0x6d9e89e6e8a4c5a!2s1500%20N%20Grant%20St%2C%20Denver%2C%20CO%2080203!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MedLink Analytics</h3>
+                <p>Professional medical billing services designed to maximize your revenue and minimize your administrative burden.</p>
+                <p style="margin-top: 1.5rem;">© 2025 MedLink Analytics. All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why-us">Why Choose Us</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#services">Claims Processing</a></li>
+                    <li><a href="#services">Denial Management</a></li>
+                    <li><a href="#services">Patient Billing</a></li>
+                    <li><a href="#services">A/R Management</a></li>
+                    <li><a href="#services">Credentialing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> contact@medlinkanalytics.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 1500 N Grant St STE 28340<br>Denver, CO 80203, US</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Web Development by <a href="https://digicellinternational.github.io/" target="_blank">Digicells</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
     <script>
-        // Set the date we're counting down to (30 days from now)
-        const countDownDate = new Date();
-        countDownDate.setDate(countDownDate.getDate() + 30);
-        
-        // Update the countdown every 1 second
-        const countdownFunction = setInterval(function() {
-            // Get today's date and time
-            const now = new Date().getTime();
-            
-            // Find the distance between now and the count down date
-            const distance = countDownDate - now;
-            
-            // Time calculations for days, hours, minutes and seconds
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // Display the result
-            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
-            
-            // If the count down is finished, write some text
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("days").innerHTML = "00";
-                document.getElementById("hours").innerHTML = "00";
-                document.getElementById("minutes").innerHTML = "00";
-                document.getElementById("seconds").innerHTML = "00";
+        // Magnetic Field Effect
+        class InteractiveBackground {
+            constructor() {
+                this.canvas = document.getElementById('particleCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                
+                this.mouse = { x: 0, y: 0, vx: 0, vy: 0, px: 0, py: 0 };
+                this.particles = [];
+                this.particleCount = 500;
+                this.intensity = 1.0;
+                this.influence = 1.0;
+                this.time = 0;
+                
+                this.init();
+                this.createParticles();
+                this.animate();
             }
-        }, 1000);
+            
+            init() {
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+            }
+            
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                this.createParticles();
+            }
+            
+            handleMouseMove(e) {
+                this.mouse.px = this.mouse.x;
+                this.mouse.py = this.mouse.y;
+                this.mouse.x = e.clientX;
+                this.mouse.y = e.clientY;
+                this.mouse.vx = this.mouse.x - this.mouse.px;
+                this.mouse.vy = this.mouse.y - this.mouse.py;
+            }
+            
+            createParticles() {
+                this.particles = [];
+                for (let i = 0; i < this.particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: Math.random() * 2 - 1,
+                        vy: Math.random() * 2 - 1,
+                        size: Math.random() * 2.5 + 0.5,
+                        hue: 180 + Math.sin(i * 0.08) * 40,
+                        alpha: Math.random() * 0.5 + 0.5
+                    });
+                }
+            }
+            
+            updateParticles() {
+                this.time += 0.01;
+                
+                // Clear canvas
+                this.ctx.fillStyle = 'rgba(17, 17, 17, 0.05)';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.particles.forEach((p, i) => {
+                    // Magnetic field effect
+                    const centerX = this.canvas.width / 2;
+                    const centerY = this.canvas.height / 2;
+                    const angle = Math.atan2(p.y - centerY, p.x - centerX);
+                    p.vx = Math.cos(angle + this.time) * 0.3;
+                    p.vy = Math.sin(angle + this.time) * 0.3;
+                    
+                    // Mouse influence
+                    if (this.mouse.x && this.mouse.y) {
+                        const dx = this.mouse.x - p.x;
+                        const dy = this.mouse.y - p.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        const maxDist = 250 * this.influence;
+                        
+                        if (distance < maxDist) {
+                            const force = (maxDist - distance) / maxDist;
+                            const angle = Math.atan2(dy, dx);
+                            p.vx += Math.cos(angle) * force * this.intensity * 3;
+                            p.vy += Math.sin(angle) * force * this.intensity * 3;
+                        }
+                    }
+                    
+                    // Apply velocity and damping
+                    p.vx *= 0.95;
+                    p.vy *= 0.95;
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    
+                    // Bounce off edges
+                    if (p.x < 0 || p.x > this.canvas.width) p.vx *= -0.8;
+                    if (p.y < 0 || p.y > this.canvas.height) p.vy *= -0.8;
+                    p.x = Math.max(0, Math.min(this.canvas.width, p.x));
+                    p.y = Math.max(0, Math.min(this.canvas.height, p.y));
+                    
+                    // Update color
+                    p.hue = (180 + Math.sin(this.time + i * 0.08) * 40) % 360;
+                    
+                    // Draw particle
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `hsla(${p.hue}, 70%, 60%, ${p.alpha})`;
+                    this.ctx.fill();
+                    
+                    // Draw connections
+                    this.particles.slice(i + 1, i + 6).forEach((p2) => {
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 120) {
+                            const opacity = (1 - distance / 120) * 0.4 * this.intensity;
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(p.x, p.y);
+                            this.ctx.lineTo(p2.x, p2.y);
+                            this.ctx.strokeStyle = `rgba(49, 173, 222, ${opacity})`;
+                            this.ctx.lineWidth = 1;
+                            this.ctx.stroke();
+                        }
+                    });
+                });
+            }
+            
+            animate() {
+                this.updateParticles();
+                requestAnimationFrame(() => this.animate());
+            }
+        }
         
-        // Form submission handler
-        document.getElementById('notification-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            alert(`Thank you! We'll notify you at ${email} when we launch.`);
-            this.querySelector('input[type="email"]').value = '';
+        // Initialize effect
+        new InteractiveBackground();
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        // Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
+            const form = document.getElementById('contactForm');
+            
+            loading.classList.add('active');
+            
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                practice: formData.get('practice') || 'Not provided',
+                phone: formData.get('phone') || 'Not provided',
+                message: formData.get('message')
+            };
+            
+            // Create mailto link
+            const subject = encodeURIComponent('Service Inquiry from ' + data.name);
+            const body = encodeURIComponent(
+                `Name: ${data.name}\n` +
+                `Email: ${data.email}\n` +
+                `Practice: ${data.practice}\n` +
+                `Phone: ${data.phone}\n\n` +
+                `Message:\n${data.message}`
+            );
+            
+            // Simulate sending delay
+            setTimeout(() => {
+                loading.classList.remove('active');
+                successMessage.classList.add('active');
+                form.reset();
+                
+                // Open email client
+                window.location.href = `mailto:contact@medlinkanalytics.com?subject=${subject}&body=${body}`;
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('active');
+                }, 5000);
+            }, 1000);
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
-</html>
+</html
