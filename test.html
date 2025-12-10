@@ -1,0 +1,136 @@
+<section class="construction-carousel-section">
+        <div class="carousel-container">
+            <button class="carousel-arrow carousel-arrow-left">
+                <div class="arrow-icon arrow-left"></div>
+            </button>
+            
+            <div class="carousel-wrapper">
+                <!-- Image Box 1 -->
+                <div class="image-box">
+                    <div class="image-box-inner">
+                        <img src="https://valenationallc.comwp-content/uploads/2024/09/4289395.jpg.webp" alt="Residential Construction" class="image-box-img">
+                        <div class="image-box-content">
+                            <h3 class="image-box-title">Residential Materials</h3>
+                            <p class="image-box-description">Premium-quality materials for building durable, safe, and modern homes.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Box 2 -->
+                <div class="image-box">
+                    <div class="image-box-inner">
+                        <img src="https://valenationallc.comwp-content/uploads/2024/09/RoofingInstall2.jpg" alt="Commercial Development" class="image-box-img">
+                        <div class="image-box-content">
+                            <h3 class="image-box-title">Commercial Project Materials</h3>
+                            <p class="image-box-description">Strong, high-grade products designed to support offices, retail spaces, and large commercial structures.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Box 3 -->
+                <div class="image-box">
+                    <div class="image-box-inner">
+                        <img src="https://valenationallc.comwp-content/uploads/2024/09/Homeinteriorrenovation-GettyImages-892372566-cc34a0e66c7f44bb8665f4d6088676da.jpg.webp" alt="Interior Design and Renovation" class="image-box-img">
+                        <div class="image-box-content">
+                            <h3 class="image-box-title">Renovation & Interior Materials</h3>
+                            <p class="image-box-description">A complete range of finishing and remodeling products to transform and upgrade any space with style and durability.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Box 4 -->
+                <div class="image-box">
+                    <div class="image-box-inner">
+                        <img src="https://valenationallc.comwp-content/uploads/2024/09/pexels-skitterphoto-1388944.jpg" alt="Project Planning & Management" class="image-box-img">
+                        <div class="image-box-content">
+                            <h3 class="image-box-title">Strengthening Foundations, Empowering Builders</h3>
+                            <p class="image-box-description">
+                               Built with quality and precision, guiding you from planning to completion, with support that builds trust.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-arrow carousel-arrow-right">
+                <div class="arrow-icon arrow-right"></div>
+            </button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselWrapper = document.querySelector('.carousel-wrapper');
+            const imageBoxes = document.querySelectorAll('.image-box');
+            const prevButton = document.querySelector('.carousel-arrow-left');
+            const nextButton = document.querySelector('.carousel-arrow-right');
+            
+            let currentIndex = 0;
+            
+            // Get the number of items to show based on screen width
+            function getItemsToShow() {
+                if (window.innerWidth <= 768) {
+                    return 1;
+                } else if (window.innerWidth <= 992) {
+                    return 2;
+                } else {
+                    return 3;
+                }
+            }
+            
+            // Calculate the width of each item
+            function updateItemWidth() {
+                const itemsToShow = getItemsToShow();
+                const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+                const itemWidth = containerWidth / itemsToShow;
+                
+                imageBoxes.forEach(box => {
+                    box.style.flex = `0 0 ${itemWidth}px`;
+                });
+                
+                updateCarousel();
+            }
+            
+            // Update carousel position
+            function updateCarousel() {
+                const itemsToShow = getItemsToShow();
+                const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+                const itemWidth = containerWidth / itemsToShow;
+                const translateX = -currentIndex * itemWidth;
+                carouselWrapper.style.transform = `translateX(${translateX}px)`;
+            }
+            
+            // Next slide
+            function nextSlide() {
+                const itemsToShow = getItemsToShow();
+                const maxIndex = imageBoxes.length - itemsToShow;
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            }
+            
+            // Event listeners
+            prevButton.addEventListener('click', prevSlide);
+            nextButton.addEventListener('click', nextSlide);
+            
+            // Initialize on load
+            updateItemWidth();
+            
+            // Update on window resize
+            window.addEventListener('resize', function() {
+                // Reset index when screen size changes to avoid issues
+                currentIndex = 0;
+                updateItemWidth();
+            });
+        });
+    </script>
