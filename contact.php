@@ -1,7 +1,5 @@
-    <!-- Header -->
-    <?php include '../assets/header.php'; ?>
-
- <!-- Contact Section -->
+ <?php include 'assets/header.php'; ?>
+    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="section-header">
             <h2>Get Started Today</h2>
@@ -73,6 +71,4 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.486732916832!2d-104.98758708462406!3d39.73917197944752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c78c4276a76ef%3A0x6d9e89e6e8a4c5a!2s1500%20N%20Grant%20St%2C%20Denver%2C%20CO%2080203!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
-
-    <!-- Footer -->
-    <?php include '../assets/footer.php'; ?>
+  <?php include 'assets/footer.php'; ?>

@@ -1,45 +1,144 @@
-<footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>MedLink Analytics</h3>
-                <p>Professional medical billing services designed to maximize your revenue and minimize your administrative burden.</p>
-                <p style="margin-top: 1.5rem;">© 2025 MedLink Analytics. All rights reserved.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#why-us">Why Choose Us</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Our Services</h3>
-                <ul class="footer-links">
-                    <li><a href="#services">Claims Processing</a></li>
-                    <li><a href="#services">Denial Management</a></li>
-                    <li><a href="#services">Patient Billing</a></li>
-                    <li><a href="#services">A/R Management</a></li>
-                    <li><a href="#services">Credentialing</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <a href="https://www.linkedin.com/company/medlinkanalytics" target="_blank" style="text-decoration:none; color:inherit;">
-    <p><i class="fab fa-linkedin" style="margin-right:6px;"></i>LinkedIn</p>
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedLink Analytics - Professional Medical Billing Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+   
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
 
-                <p><i class="fas fa-envelope"></i> contact@medlinkanalytics.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> 1500 N Grant St STE 28340<br>Denver, CO 80203, US</p>
+    <!-- Header -->
+    <?php include './assets/header.php'; ?>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <h2>Comprehensive Billing Solutions</h2>
+            <p>End-to-end revenue cycle management tailored to your practice's unique needs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3>Claims Processing</h3>
+                <p>Streamlined submission with 98% first-pass acceptance rate</p>
+                <ul>
+                    <li>Accurate coding (ICD-10, CPT)</li>
+                    <li>Electronic submission</li>
+                    <li>Real-time tracking</li>
+                    <li>Quick turnaround (24-48h)</li>
+                </ul>
+                <a href="/contact" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <h3>Denial Management</h3>
+                <p>Proactive strategies to prevent and resolve claim denials</p>
+                <ul>
+                    <li>Root cause analysis</li>
+                    <li>Appeal preparation</li>
+                    <li>Trend monitoring</li>
+                    <li>Revenue recovery</li>
+                </ul>
+                <a href="/contact" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Patient Billing</h3>
+                <p>Clear, compassionate patient financial experience</p>
+                <ul>
+                    <li>Transparent statements</li>
+                    <li>Payment plan options</li>
+                    <li>Patient portal access</li>
+                    <li>Billing inquiries support</li>
+                </ul>
+                <a href="/contact" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>A/R Management</h3>
+                <p>Accelerate cash flow with expert receivables recovery</p>
+                <ul>
+                    <li>Aging analysis</li>
+                    <li>Follow-up protocols</li>
+                    <li>Collection strategies</li>
+                    <li>Financial reporting</li>
+                </ul>
+                <a href="/contact" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <h3>Credentialing</h3>
+                <p>Seamless provider enrollment and verification</p>
+                <ul>
+                    <li>Insurance enrollment</li>
+                    <li>License verification</li>
+                    <li>Re-credentialing support</li>
+                    <li>Database maintenance</li>
+                </ul>
+                <a href="/contact" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>Analytics & Reporting</h3>
+                <p>Data-driven insights for informed decisions</p>
+                <ul>
+                    <li>Custom dashboards</li>
+                    <li>KPI tracking</li>
+                    <li>Revenue forecasting</li>
+                    <li>Actionable insights</li>
+                </ul>
+                <a href="/contact" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Digital Marketing</h3>
+                <p>Grow your practice with strategic online presence</p>
+                <ul>
+                    <li>SEO optimization</li>
+                    <li>Social media management</li>
+                    <li>Content marketing</li>
+                    <li>Online reputation management</li>
+                </ul>
+                <a href="/contact" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>System Automation</h3>
+                <p>Streamline workflows with intelligent automation</p>
+                <ul>
+                    <li>Practice management integration</li>
+                    <li>Automated appointment reminders</li>
+                    <li>Electronic health records sync</li>
+                    <li>Workflow optimization</li>
+                </ul>
+                <a href="/contact" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 MedLinkAnalysis LLC | Development <a href="https://digicellinternational.github.io/" target="_blank">Digicells</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-        </div>
-    </footer>
-     <script>
+    </section>
+    <!-- Footer -->
+    <?php include 'assets/footer.php'; ?>
+    <script>
         // Magnetic Field Effect
         class InteractiveBackground {
             constructor() {

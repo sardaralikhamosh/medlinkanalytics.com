@@ -1,5 +1,3 @@
-
-
     <!-- Header -->
     <?php include 'assets/header.php'; ?>
 
@@ -335,4 +333,3 @@
 
     <!-- Footer -->
     <?php include 'assets/footer.php'; ?>
- 
