@@ -1,296 +1,338 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedLink Analytics - Coming Soon</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a3a5f 0%, #2c5c8a 100%);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .container {
-            max-width: 800px;
-            width: 100%;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .logo {
-            margin-bottom: 30px;
-        }
-        
-        .logo h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 40px;
-            color: #a8d8ff;
-            letter-spacing: 0.5px;
-        }
-        
-        .main-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .main-content p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            color: #e6f2ff;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px 15px;
-            border-radius: 10px;
-            min-width: 100px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .countdown-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            display: block;
-        }
-        
-        .countdown-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
-            color: #c2e0ff;
-        }
-        
-        .notify-form {
-            margin-bottom: 30px;
-        }
-        
-        .form-group {
-            display: flex;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        input[type="email"] {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px 0 0 50px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-        }
-        
-        button {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 0 50px 50px 0;
-            background: #4facfe;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        button:hover {
-            background: #00c6ff;
-        }
-        
-        .contact-info {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .contact-info p {
-            margin-bottom: 10px;
-            color: #c2e0ff;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: #4facfe;
-            transform: translateY(-3px);
-        }
-        
-        .copyright, .copyright b{
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #fff;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
-            .logo h1 {
-                font-size: 2.5rem;
-            }
-            
-            .tagline {
-                font-size: 1.2rem;
-            }
-            
-            .main-content h2 {
-                font-size: 2rem;
-            }
-            
-            .main-content p {
-                font-size: 1rem;
-            }
-            
-            .form-group {
-                flex-direction: column;
-            }
-            
-            input[type="email"] {
-                border-radius: 50px;
-                margin-bottom: 10px;
-            }
-            
-            button {
-                border-radius: 50px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="logo">
-            <h1>MedLink Analytics</h1>
-            <div class="tagline">Smarter Analytics. Stronger Revenue.</div>
-        </div>
-        
-        <div class="main-content">
-            <h2>Our New Website Is Coming Soon</h2>            
-            <div class="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">00</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Seconds</span>
+
+
+    <!-- Header -->
+    <?php include 'assets/header.php'; ?>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Smarter Analytics. Stronger Revenue.</h1>
+                <p>Transform your medical billing with precision, compliance, and transparency. We maximize your revenue while you focus on patient care.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get Free Revenue Assessment</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
                 </div>
             </div>
-            
-            <div class="contact-info">
-                <p>For immediate inquiries, please contact us at:</p>
-                <p>contact@medlinkanalytics.com</p>
+            <div class="hero-visual">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Clean Claims Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">24-48h</span>
+                        <span class="stat-label">Claim Submission</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">HIPAA Compliant</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">Experienced</span>
+                        <span class="stat-label">Expert Team</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="copyright">
-        &copy; 2025 MedLink Analytics. Web Development by <a href="https://sardaralikhamosh.github.io"><b>Sardar Ali Khamosh</b></a>.
+    </section>
+
+    <!-- Trust Badges -->
+    <div style="background: rgba(49, 173, 222, 0.03); padding: 3rem 0;">
+        <div class="trust-badges">
+            <div class="badge">
+                <i class="fas fa-shield-alt"></i>
+                <div class="badge-text">
+                    <strong>HIPAA Compliant</strong>
+                    <span>Secure & Certified</span>
+                </div>
+            </div>
+            <div class="badge">
+                <i class="fas fa-lock"></i>
+                <div class="badge-text">
+                    <strong>Data Security</strong>
+                    <span>Bank-Level Encryption</span>
+                </div>
+            </div>
+            <div class="badge">
+                <i class="fas fa-flag-usa"></i>
+                <div class="badge-text">
+                    <strong>US-Based Team</strong>
+                    <span>Expert Support</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script>
-        // Set the date we're counting down to (30 days from now)
-        const countDownDate = new Date();
-        countDownDate.setDate(countDownDate.getDate() + 30);
-        
-        // Update the countdown every 1 second
-        const countdownFunction = setInterval(function() {
-            // Get today's date and time
-            const now = new Date().getTime();
-            
-            // Find the distance between now and the count down date
-            const distance = countDownDate - now;
-            
-            // Time calculations for days, hours, minutes and seconds
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // Display the result
-            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
-            
-            // If the count down is finished, write some text
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("days").innerHTML = "00";
-                document.getElementById("hours").innerHTML = "00";
-                document.getElementById("minutes").innerHTML = "00";
-                document.getElementById("seconds").innerHTML = "00";
-            }
-        }, 1000);
-        
-        // Form submission handler
-        document.getElementById('notification-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            alert(`Thank you! We'll notify you at ${email} when we launch.`);
-            this.querySelector('input[type="email"]').value = '';
-        });
-    </script>
-</body>
-</html>
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <h2>Comprehensive Billing Solutions</h2>
+            <p>End-to-end revenue cycle management tailored to your practice's unique needs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3>Claims Processing</h3>
+                <p>Streamlined submission with 98% first-pass acceptance rate</p>
+                <ul>
+                    <li>Accurate coding (ICD-10, CPT)</li>
+                    <li>Electronic submission</li>
+                    <li>Real-time tracking</li>
+                    <li>Quick turnaround (24-48h)</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <h3>Denial Management</h3>
+                <p>Proactive strategies to prevent and resolve claim denials</p>
+                <ul>
+                    <li>Root cause analysis</li>
+                    <li>Appeal preparation</li>
+                    <li>Trend monitoring</li>
+                    <li>Revenue recovery</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Patient Billing</h3>
+                <p>Clear, compassionate patient financial experience</p>
+                <ul>
+                    <li>Transparent statements</li>
+                    <li>Payment plan options</li>
+                    <li>Patient portal access</li>
+                    <li>Billing inquiries support</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>A/R Management</h3>
+                <p>Accelerate cash flow with expert receivables recovery</p>
+                <ul>
+                    <li>Aging analysis</li>
+                    <li>Follow-up protocols</li>
+                    <li>Collection strategies</li>
+                    <li>Financial reporting</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <h3>Credentialing</h3>
+                <p>Seamless provider enrollment and verification</p>
+                <ul>
+                    <li>Insurance enrollment</li>
+                    <li>License verification</li>
+                    <li>Re-credentialing support</li>
+                    <li>Database maintenance</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>Analytics & Reporting</h3>
+                <p>Data-driven insights for informed decisions</p>
+                <ul>
+                    <li>Custom dashboards</li>
+                    <li>KPI tracking</li>
+                    <li>Revenue forecasting</li>
+                    <li>Actionable insights</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Digital Marketing</h3>
+                <p>Grow your practice with strategic online presence</p>
+                <ul>
+                    <li>SEO optimization</li>
+                    <li>Social media management</li>
+                    <li>Content marketing</li>
+                    <li>Online reputation management</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>System Automation</h3>
+                <p>Streamline workflows with intelligent automation</p>
+                <ul>
+                    <li>Practice management integration</li>
+                    <li>Automated appointment reminders</li>
+                    <li>Electronic health records sync</li>
+                    <li>Workflow optimization</li>
+                </ul>
+                <a href="/services" class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="section-header">
+            <h2>Why Choose MedLink Analytics</h2>
+            <p>Experience the difference of a partner committed to your financial success</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-user-md"></i>
+                <h3>US-Based Expertise</h3>
+                <p>Certified billing specialists who understand US healthcare regulations</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-rocket"></i>
+                <h3>Advanced Technology</h3>
+                <p>Cutting-edge systems for efficiency, accuracy, and real-time insights</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-handshake"></i>
+                <h3>Transparent Partnership</h3>
+                <p>Clear communication, detailed reporting, no hidden fees</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Revenue Optimization</h3>
+                <p>Proven strategies to increase collections by 20-30%</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-clock"></i>
+                <h3>Fast Turnaround</h3>
+                <p>Claims submitted within 24-48 hours of encounter</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-headset"></i>
+                <h3>Dedicated Support</h3>
+                <p>Your success manager available when you need them</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2>About MedLink Analytics</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Your Trusted Revenue Cycle Partner</h3>
+                <p>At MedLink Analytics, we believe healthcare providers deserve financial peace of mind. Our mission is to remove the complexity and stress from medical billing, allowing you to focus entirely on delivering exceptional patient care.</p>
+                <p>With years of experience and a team of certified billing professionals, we combine deep industry knowledge with cutting-edge technology to maximize your practice's revenue.</p>
+            </div>
+            <div>
+                <ul class="values-list">
+                    <li>
+                        <strong>Integrity</strong>
+                        Honest, ethical practices in every interaction
+                    </li>
+                    <li>
+                        <strong>Excellence</strong>
+                        Commitment to accuracy and continuous improvement
+                    </li>
+                    <li>
+                        <strong>Partnership</strong>
+                        Your success is our success
+                    </li>
+                    <li>
+                        <strong>Compliance</strong>
+                        100% HIPAA compliant, always
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <h2>Get Started Today</h2>
+            <p>Schedule a free revenue assessment and discover how much more you could be collecting</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:contact@medlinkanalytics.com">contact@medlinkanalytics.com</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Office Address</h4>
+                        <p>MedLink Analytics<br>
+                        1500 N Grant St STE 28340<br>
+                        Denver, Colorado CO 80203<br>
+                        United States</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM MST<br>
+                        Saturday - Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <div class="success-message" id="successMessage">
+                    Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                </div>
+                <h3>Request a Consultation</h3>
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name"></label>
+                        <input type="text" id="name" name="name" required placeholder="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"></label>
+                        <input type="email" id="email" name="email" required placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="practice"></label>
+                        <input type="text" id="practice" name="practice" placeholder="Practice Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone"></label>
+                        <input type="tel" id="phone" name="phone" placeholder="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message"></label>
+                        <textarea id="message" name="message" required placeholder="message"></textarea>
+                    </div>
+                    <div class="loading" id="loading">
+                        <i class="fas fa-spinner fa-spin"></i> Sending your message...
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Schedule Free Assessment</button>
+                </form>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.486732916832!2d-104.98758708462406!3d39.73917197944752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c78c4276a76ef%3A0x6d9e89e6e8a4c5a!2s1500%20N%20Grant%20St%2C%20Denver%2C%20CO%2080203!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <?php include 'assets/footer.php'; ?>
+ 
