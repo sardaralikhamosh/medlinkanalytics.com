@@ -99,7 +99,7 @@
             min-height: 90vh;
             display: flex;
             align-items: center;
-            background: transparent;
+            background: #0000008f;
             color: #fff;
             overflow: hidden;
         }
@@ -615,6 +615,12 @@
 
         /* Responsive */
         @media (max-width: 968px) {
+            .hero{
+                background: #00000094 !important;
+            }
+            #particleCanvas {
+                opacity: 0.3 !important;
+            }
             .nav-links {
                 position: fixed;
                 top: 70px;
