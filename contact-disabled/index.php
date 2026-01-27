@@ -1,7 +1,8 @@
 <?php
-// contact.php - Updated
-require_once 'config.php'; // Include config directly
-include 'assets/header.php';
+// contact.php
+require_once 'init.php'; // Add this line
+
+include '../assets/header.php';
 ?>
 
  <!-- Contact Section -->
@@ -13,13 +14,6 @@ include 'assets/header.php';
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Contact Information</h3>
-                 <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h4>Phone</h4>
-                        <p><a href="tel:+17204454634">+1 720-445-4634</a></p>
-                    </div>
-                </div>
                 <div class="info-item">
                     <i class="fas fa-envelope"></i>
                     <div>
@@ -85,4 +79,4 @@ include 'assets/header.php';
     </section>
 
     <!-- Footer -->
-   <?php include 'assets/footer.php'; ?>
+    <?php include '../assets/footer.php'; ?>

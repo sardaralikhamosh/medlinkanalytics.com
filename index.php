@@ -1,3 +1,8 @@
+<title>MedLink Analytics LLC | Medical Billing & Revenue Cycle Experts</title>
+
+<meta name="description" content="Trusted medical billing and healthcare analytics services helping providers optimize revenue, streamline operations, and focus on patient care.">
+
+
     <!-- Header -->
     <?php include 'assets/header.php'; ?>
 
@@ -36,36 +41,36 @@
     </section>
 
     <!-- Trust Badges -->
-    <div style="background: rgba(49, 173, 222, 0.03); padding: 3rem 0;">
-        <div class="trust-badges">
-            <div class="badge">
-                <i class="fas fa-shield-alt"></i>
-                <div class="badge-text">
-                    <strong>HIPAA Compliant</strong>
-                    <span>Secure & Certified</span>
-                </div>
+    <div class="trust-badges-section" style="position: relative; z-index: 100; padding: 3rem 0;">
+    <div class="trust-badges">
+        <div class="badge">
+            <i class="fas fa-shield-alt"></i>
+            <div class="badge-text">
+                <strong>HIPAA Compliant</strong>
+                <span>Secure & Certified</span>
             </div>
-            <div class="badge">
-                <i class="fas fa-lock"></i>
-                <div class="badge-text">
-                    <strong>Data Security</strong>
-                    <span>Bank-Level Encryption</span>
-                </div>
+        </div>
+        <div class="badge">
+            <i class="fas fa-lock"></i>
+            <div class="badge-text">
+                <strong>Data Security</strong>
+                <span>Bank-Level Encryption</span>
             </div>
-            <div class="badge">
-                <i class="fas fa-flag-usa"></i>
-                <div class="badge-text">
-                    <strong>US-Based Team</strong>
-                    <span>Expert Support</span>
-                </div>
+        </div>
+        <div class="badge">
+            <i class="fas fa-flag-usa"></i>
+            <div class="badge-text">
+                <strong>US-Based Team</strong>
+                <span>Expert Support</span>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Services Section -->
     <section id="services">
         <div class="section-header">
-            <h2>Comprehensive Billing Solutions</h2>
+            <h2>Medical Billing</h2>
             <p>End-to-end revenue cycle management tailored to your practice's unique needs</p>
         </div>
         <div class="services-grid">
@@ -267,6 +272,13 @@
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Contact Information</h3>
+                 <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p><a href="tel:+17204454634">+1 720-445-4634</a></p>
+                    </div>
+                </div>
                 <div class="info-item">
                     <i class="fas fa-envelope"></i>
                     <div>
@@ -298,7 +310,7 @@
                     Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
                 </div>
                 <h3>Request a Consultation</h3>
-                <form id="contactForm" onsubmit="handleSubmit(event)">
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name"></label>
                         <input type="text" id="name" name="name" required placeholder="name">

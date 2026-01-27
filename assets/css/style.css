@@ -651,7 +651,7 @@
             }
 
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem !important;
             }
 
             .stats-grid {
@@ -692,3 +692,94 @@
         .success-message.active {
             display: block;
         }
+        
+        /*below code is added by sardaralikhamosh@gmail.com to fix the issue of 3rd section vissibality */
+        /* Ensure proper z-index hierarchy */
+#particleCanvas {
+    z-index: -2;
+}
+
+#canvasOverlay {
+    z-index: -1;
+}
+
+/* All content sections */
+section, .hero, .trust-badges-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Make trust badges pop */
+.trust-badges {
+    position: relative;
+    z-index: 2;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(49, 173, 222, 0.35) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
+    transition: all 0.3s ease !important;
+}
+
+.badge:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: var(--brand-blue) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 35px rgba(49, 173, 222, 0.2) !important;
+}
+
+/*below code is for submit page*/
+
+/* Loading spinner */
+.loading {
+    display: none;
+    text-align: center;
+    padding: 10px;
+    margin: 15px 0;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    color: #666;
+}
+
+.loading i {
+    margin-right: 8px;
+}
+
+/* Success message */
+.success-message {
+    display: none;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #c3e6cb;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.success-message.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form validation styles */
+.form-group input:invalid,
+.form-group textarea:invalid {
+    border-color: #31adde !important;
+}
+
+.form-group input:valid,
+.form-group textarea:valid {
+    border-color: #31adde;
+}
+#contactForm input {
+    border-color: #31adde !important;
+}
+        
