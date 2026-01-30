@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salary Slip - MedLink Analytics</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wgt@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -283,6 +283,41 @@
             border: 1px solid var(--border);
         }
 
+        /* Date selector specific styles */
+        .date-select, .date-input {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            background: white;
+            border-radius: 4px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 140px;
+        }
+
+        .date-select:focus, .date-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .date-select:hover, .date-input:hover {
+            border-color: var(--primary-dark);
+        }
+
+        /* Date input calendar icon styling */
+        .date-input::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            filter: invert(0.5);
+        }
+
+        .date-input::-webkit-calendar-picker-indicator:hover {
+            filter: invert(0.3);
+        }
+
         .slip-body {
             padding: 2rem;
         }
@@ -508,6 +543,14 @@
             .slip-footer {
                 page-break-inside: avoid;
             }
+            /* Hide interactive date elements in print */
+            .date-select, .date-input {
+                border: none;
+                background: transparent;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
             @page {
                 margin: 0.5cm;
             }
@@ -530,6 +573,10 @@
             .date-info {
                 gap: 1rem;
             }
+            .date-select, .date-input {
+                min-width: 120px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -551,7 +598,6 @@
                     <option value="0006">0006 - Waqar</option>
                     <option value="0007">0007 - Azhar Ali</option>
                     <option value="0008">0008 - Zakir Ali</option>
-                    <option value="0009">0009 - Shah Akber</option>
                 </select>
             </div>
 
@@ -580,15 +626,30 @@
                 <div class="date-info">
                     <div class="date-item">
                         <span class="date-label">Month</span>
-                        <span class="date-value" id="salaryMonth">January</span>
+                        <select class="date-value date-select" id="salaryMonth">
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
                     </div>
                     <div class="date-item">
                         <span class="date-label">Year</span>
-                        <span class="date-value" id="salaryYear">2026</span>
+                        <select class="date-value date-select" id="salaryYear">
+                            <!-- Years will be populated by JavaScript -->
+                        </select>
                     </div>
                     <div class="date-item">
                         <span class="date-label">Pay Date</span>
-                        <span class="date-value" id="payDate">31/01/2026</span>
+                        <input type="date" class="date-value date-input" id="payDate" value="2026-01-31">
                     </div>
                 </div>
             </div>
@@ -697,170 +758,169 @@
     <script>
         let editMode = true;
 
+        // Initialize year dropdown with years from 2026 onwards
+        function initializeYearDropdown() {
+            const yearSelect = document.getElementById('salaryYear');
+            const currentYear = 2026;
+            const numberOfYears = 50; // Show 50 years from 2026
+            
+            for (let i = 0; i < numberOfYears; i++) {
+                const year = currentYear + i;
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                if (year === currentYear) {
+                    option.selected = true;
+                }
+                yearSelect.appendChild(option);
+            }
+        }
+
         // Mock database - Replace this with actual database calls
         const employeeDatabase = {
             "0001": {
                 name: "Adnan Murad",
-                designation: "Chief Exective Officer ",
+                designation: "Chief Executive Officer",
                 department: "Billing",
-                doj: "12/01/2025",
-                bankAccount: "XXXX-XXXX-1234",
+                doj: "11/07/2025",
+                bankAccount: "+92 318 8187773",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 2000 },
-                    { description: "Medical Allowance", amount: 500 },
-                    { description: "Performance Bonus", amount: 1000 }
+                    { description: "House Rent Allowance", amount: 00 },
+                    { description: "Medical Allowance", amount: 00 },
+                    { description: "Performance Bonus", amount: 00 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 800 },
-                    { description: "Insurance", amount: 200 },
-                    { description: "Provident Fund", amount: 500 }
+                    { description: "Tax Deduction", amount: 00 },
+                    { description: "Insurance", amount: 00 },
+                    { description: "Provident Fund", amount: 00 }
                 ]
             },
             "0002": {
                 name: "Abid Murad",
-                designation: "Senior Billing Expert",
-                department: "Medical Coding",
-                doj: "12/01/2025",
-                bankAccount: "XXXX-XXXX-2345",
+                designation: "Senior Credentialling Expert",
+                department: "Credentialling",
+                doj: "11/07/2025",
+                bankAccount: "+92 316 1883266",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 2400 },
-                    { description: "Medical Allowance", amount: 600 },
-                    { description: "Performance Bonus", amount: 1200 }
+                    { description: "House Rent Allowance", amount: 00 },
+                    { description: "Medical Allowance", amount: 00 },
+                    { description: "Performance Bonus", amount: 00 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 1000 },
-                    { description: "Insurance", amount: 250 },
-                    { description: "Provident Fund", amount: 600 }
+                    { description: "Tax Deduction", amount: 00 },
+                    { description: "Insurance", amount: 00 },
+                    { description: "Provident Fund", amount: 00 }
                 ]
             },
             "0003": {
                 name: "Sardar Ali",
-                designation: "IT Expert",
-                department: "Operations",
-                doj: "12/01/2025",
-                bankAccount: "XXXX-XXXX-3456",
+                designation: "-",
+                department: "Medical Billing",
+                doj: "12/08/2025",
+                bankAccount: "6986529308714110343",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
                     { description: "House Rent Allowance", amount: 3000 },
-                    { description: "Medical Allowance", amount: 750 },
-                    { description: "Performance Bonus", amount: 1500 },
-                    { description: "Management Allowance", amount: 1000 }
+                    { description: "Medical Allowance", amount: 00 },
+                    { description: "Performance Bonus", amount: 00 },
+                    { description: "Management Allowance", amount: 00 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 1300 },
-                    { description: "Insurance", amount: 300 },
-                    { description: "Provident Fund", amount: 750 }
+                    { description: "Tax Deduction", amount: 00 },
+                    { description: "Insurance", amount: 00 },
+                    { description: "Provident Fund", amount: 00 }
                 ]
             },
             "0004": {
-                name: "Kashif",
-                designation: "Medical Billing Analyst",
-                department: "Billing",
-                doj: "12/01/2025",
-                bankAccount: "XXXX-XXXX-4567",
+                name: "Kashif Khan",
+                designation: "-",
+                department: "Medical Billing",
+                doj: "11/10/2025",
+                bankAccount: "31473910000031-30",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 2200 },
-                    { description: "Medical Allowance", amount: 550 },
-                    { description: "Performance Bonus", amount: 800 }
+                    { description: "House Rent Allowance", amount: 00 },
+                    { description: "Medical Allowance", amount: 00 },
+                    { description: "Performance Bonus", amount: 00 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 900 },
-                    { description: "Insurance", amount: 220 },
-                    { description: "Provident Fund", amount: 550 }
+                    { description: "Tax Deduction", amount: 00 },
+                    { description: "Insurance", amount: 00 },
+                    { description: "Provident Fund", amount: 00 }
                 ]
             },
             "0005": {
                 name: "Qasim Baig",
-                designation: "Medical Billing Analyst",
-                department: "Billing",
-                doj: "12/01/2025",
-                bankAccount: "XXXX-XXXX-5678",
+                designation: "-",
+                department: "Medical Billing",
+                doj: "11/10/2025",
+                bankAccount: "21774181814279",
                 earnings: [
-                    { description: "Basic Salary", amount: 9000 },
-                    { description: "House Rent Allowance", amount: 3600 },
-                    { description: "Medical Allowance", amount: 900 },
-                    { description: "Performance Bonus", amount: 2000 },
-                    { description: "Management Allowance", amount: 1500 }
+                    { description: "Basic Salary", amount: 50000 },
+                    { description: "House Rent Allowance", amount: 00 },
+                    { description: "Medical Allowance", amount: 00 },
+                    { description: "Performance Bonus", amount: 00 },
+                    { description: "Management Allowance", amount: 00 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 1800 },
-                    { description: "Insurance", amount: 400 },
-                    { description: "Provident Fund", amount: 900 }
+                    { description: "Tax Deduction", amount: 00 },
+                    { description: "Insurance", amount: 00 },
+                    { description: "Provident Fund", amount: 00 }
                 ]
             },
             "0006": {
                 name: "Waqar",
-                designation: "Medical Coder",
+                designation: "-",
                 department: "Medical Coding",
-                doj: "12/04/2025",
-                bankAccount: "XXXX-XXXX-6789",
+                doj: "12/22/2025",
+                bankAccount: "217741816276-32",
                 earnings: [
-                    { description: "Basic Salary", amount: 4500 },
-                    { description: "House Rent Allowance", amount: 1800 },
-                    { description: "Medical Allowance", amount: 450 }
+                    { description: "Basic Salary", amount: 50000 },
+                    { description: "House Rent Allowance", amount: 00 },
+                    { description: "Medical Allowance", amount: 00 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 700 },
-                    { description: "Insurance", amount: 180 },
-                    { description: "Provident Fund", amount: 450 }
+                    { description: "Tax Deduction", amount: 00 },
+                    { description: "Insurance", amount: 00 },
+                    { description: "Provident Fund", amount: 00 }
                 ]
             },
             "0007": {
                 name: "Azhar Ali",
-                designation: "Claims Specialist",
-                department: "Claims Processing",
-                doj: "18/02/2023",
-                bankAccount: "XXXX-XXXX-7890",
+                designation: "-",
+                department: "Medical Billing",
+                doj: "01/12/20236",
+                bankAccount: "+923554214775",
                 earnings: [
-                    { description: "Basic Salary", amount: 5200 },
-                    { description: "House Rent Allowance", amount: 2080 },
-                    { description: "Medical Allowance", amount: 520 },
-                    { description: "Performance Bonus", amount: 900 }
+                    { description: "Basic Salary", amount: 50000 },
+                    { description: "House Rent Allowance", amount: 00 },
+                    { description: "Medical Allowance", amount: 00 },
+                    { description: "Performance Bonus", amount: 00 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 850 },
-                    { description: "Insurance", amount: 210 },
-                    { description: "Provident Fund", amount: 520 }
+                    { description: "Tax Deduction", amount: 00 },
+                    { description: "Insurance", amount: 00 },
+                    { description: "Provident Fund", amount: 00 }
                 ]
             },
             "0008": {
                 name: "Zakir Ali",
-                designation: "Office Assistant",
+                designation: "-",
                 department: "Operations",
                 doj: "09/11/2025",
-                bankAccount: "XXXX-XXXX-8901",
+                bankAccount: "03491899706",
                 earnings: [
-                    { description: "Basic Salary", amount: 6500 },
-                    { description: "House Rent Allowance", amount: 2600 },
-                    { description: "Medical Allowance", amount: 650 },
-                    { description: "Performance Bonus", amount: 1300 }
+                    { description: "Basic Salary", amount: 50000 },
+                    { description: "House Rent Allowance", amount: 00 },
+                    { description: "Medical Allowance", amount: 00 },
+                    { description: "Performance Bonus", amount: 00 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 1100 },
-                    { description: "Insurance", amount: 260 },
-                    { description: "Provident Fund", amount: 650 }
-                ]
-            },
-            "0009": {
-                name: "Shah Akber",
-                designation: "Medical Billing Supervisor",
-                department: "Revenue Cycle Management",
-                doj: "25/07/2025",
-                bankAccount: "XXXX-XXXX-9012",
-                earnings: [
-                    { description: "Basic Salary", amount: 7000 },
-                    { description: "House Rent Allowance", amount: 2800 },
-                    { description: "Medical Allowance", amount: 700 },
-                    { description: "Performance Bonus", amount: 1400 },
-                    { description: "Supervisor Allowance", amount: 800 }
-                ],
-                deductions: [
-                    { description: "Tax Deduction", amount: 1250 },
-                    { description: "Insurance", amount: 280 },
-                    { description: "Provident Fund", amount: 700 }
+                    { description: "Tax Deduction", amount: 00 },
+                    { description: "Insurance", amount: 00 },
+                    { description: "Provident Fund", amount: 00 }
                 ]
             }
         };
@@ -1009,6 +1069,7 @@
             const inputs = document.querySelectorAll('.editable-cell');
             const deleteButtons = document.querySelectorAll('.delete-row-btn');
             const addButtons = document.querySelectorAll('.add-row-btn');
+            const dateSelectors = document.querySelectorAll('.date-select, .date-input');
 
             editableElements.forEach(el => {
                 el.contentEditable = editMode;
@@ -1028,18 +1089,26 @@
                 btn.style.display = editMode ? 'inline-block' : 'none';
             });
 
+            dateSelectors.forEach(selector => {
+                selector.disabled = !editMode;
+            });
+
             alert(editMode ? 'Edit mode enabled' : 'Edit mode disabled');
         }
 
         function resetSlip() {
             if (confirm('Are you sure you want to reset the salary slip? All changes will be lost.')) {
                 document.getElementById('employeeSelect').value = '';
+                document.getElementById('salaryMonth').value = 'January';
+                document.getElementById('salaryYear').value = '2026';
+                document.getElementById('payDate').value = '2026-01-31';
                 clearSlip();
             }
         }
 
         // Initial setup
         document.addEventListener('DOMContentLoaded', function() {
+            initializeYearDropdown();
             clearSlip();
         });
     </script>
