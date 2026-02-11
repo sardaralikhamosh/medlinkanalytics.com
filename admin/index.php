@@ -670,7 +670,33 @@ $remaining_minutes = floor($remaining_time / 60);
                     <span>→</span>
                 </span>
             </a>
+            <!-- Employee Registration Form -->
+            <a href="employee-registration-form" class="card salary">
+                <span class="card-badge">Administration</span>
+                <div class="card-icon"></div>
+                <h3 class="card-title">Employee Registration</h3>
+                <p class="card-description">
+                    Create and manage professional Employees Registration Form with dynamic employee data.
+                </p>
+                <span class="card-link">
+                    Open Tool
+                    <span>→</span>
+                </span>
+            </a>
 
+            <!-- Company Profile -->
+            <a href="company-profile" class="card salary">
+                <span class="card-badge">Administration</span>
+                <div class="card-icon"></div>
+                <h3 class="card-title">Company Profile</h3>
+                <p class="card-description">
+                    Modify and download professional Company profile with dynamic data field.
+                </p>
+                <span class="card-link">
+                    Open Tool
+                    <span>→</span>
+                </span>
+            </a>
             <!-- Credentialing Checklist -->
             <a href="credentialing-checklist-form" class="card credentialing">
                 <span class="card-badge">Essential</span>
