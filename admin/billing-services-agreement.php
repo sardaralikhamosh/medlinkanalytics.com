@@ -482,7 +482,7 @@
             <tbody>
                 <tr>
                     <td>Billing Service</td>
-                    <td><input type="text" id="billingFee" placeholder="___%" style="width: 100px;"> of the insurance collection</td>
+                    <td>4.5% of the insurance collection</td>
                 </tr>
             </tbody>
         </table>
