@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedLink Analytics LLC - Services Agreement</title>
+    <title>MedLink Analytics LLC - Credentialing Services Agreement</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -124,6 +124,11 @@
             margin: 15px 0 10px 0;
         }
 
+        .subsection-item {
+            margin: 10px 0 10px 30px;
+            text-align: justify;
+        }
+
         /* Editable Fields */
         .editable-field {
             display: inline-block;
@@ -144,7 +149,7 @@
         }
 
         .editable-field.wide {
-            min-width: 400px;
+            min-width: 300px;
         }
 
         .editable-field.full-width {
@@ -179,33 +184,22 @@
         }
 
         table th {
-            background: #f0f0f0;
-            padding: 10px;
+            background: #e8f4ff;
+            padding: 12px;
             text-align: left;
             font-weight: 600;
             border: 1px solid var(--border-color);
+            color: var(--primary-color);
         }
 
         table td {
-            padding: 10px;
+            padding: 12px;
             border: 1px solid var(--border-color);
-        }
-
-        table td input {
-            width: 100%;
-            border: none;
-            background: transparent;
-            font-family: inherit;
-            font-size: inherit;
-        }
-
-        table td input:focus {
-            outline: none;
-            background: var(--input-bg);
         }
 
         /* Signature Section */
         .signature-section {
+            margin-top: 40px;
             page-break-inside: avoid;
         }
 
@@ -300,15 +294,6 @@
             display: none;
         }
 
-        .signature-image {
-            max-width: 100%;
-            height: auto;
-            border: 2px solid var(--border-color);
-            border-radius: 5px;
-            background: white;
-            padding: 10px;
-        }
-
         /* Print Styles */
         @media print {
             body {
@@ -368,7 +353,7 @@
             }
         }
 
-        /* Loading indicator for signature upload */
+        /* Loading indicator */
         .loading {
             display: none;
             color: var(--primary-color);
@@ -388,7 +373,7 @@
     <!-- Print Button (Fixed at Top) -->
     <div class="print-controls">
         <button class="print-btn" onclick="window.print()">
-            🖨️ Print Document
+            🖨 Print Document
         </button>
     </div>
 
@@ -399,46 +384,58 @@
             <center>
             <img src="../header-medlinkanalytics.png" alt="MedLink Analytics Header">
             </center>
-            <div class="company-info">
-                "We handle the billing, you handle the healing"
-            </div>
         </div>
 
         <!-- Document Title -->
-        <h1 class="document-title">MEDLINK ANALYTICS LLC<br>Billing SERVICES AGREEMENT</h1>
+        <h1 class="document-title">Credentialing & Licensing SERVICES AGREEMENT</h1>
 
-        <!-- Agreement Content -->
+        <!-- Agreement Opening -->
         <div class="doc-paragraph">
-            This service agreement ("Billing Services") is made and entered into as of 
-            <input type="date" class="date-field" id="agreementDate" value="2026-02-12">, between 
-            <strong>MedLink Analytics LLC</strong> ("Covered Entity") having its principal office at 
+            This service agreement ("Credentialing & Licensing") is made and entered into as of 
+            <input type="date" class="date-field" id="agreementDate" value="2026-02-17">, between 
+            <strong>MedLink Analytics LLC</strong> having its principal office at 
             1500 N Grant St STE 28340, Denver, Colorado 80203 and 
-            <input type="text" class="editable-field wide" id="clientName" placeholder="Client Name"> 
-            ("Client") having its principal office at
-            <input type="text" class="editable-field full-width" id="clientAddress" placeholder="Client Address">.
+            <input type="text" class="editable-field wide" id="businessName1" placeholder="your business name"> 
+            having its principal office at 
+            <input type="text" class="editable-field wide" id="businessAddress" placeholder="address">.
         </div>
 
         <div class="doc-paragraph">
-            <strong>WHEREAS,</strong> MedLink Analytics LLC is a medical billing services company that provides computerized 
-            claims, billing, coding, credentialing, and collection services to healthcare providers; and
+            <strong>WHEREAS,</strong> MedLink Analytics LLC is a medical billing services company that provides computerized claims, billing, coding, credentialing, and collection services to healthcare providers; and
         </div>
 
         <div class="doc-paragraph">
-            <strong>WHEREAS,</strong> Client wishes to retain MedLink Analytics LLC to provide medical billing services 
-            ("Services") pursuant to the terms and conditions of this Agreement.
+            <strong>WHEREAS,</strong> Client wishes to retain MedLink Analytics LLC to provide credentialing services for pursuant to the terms and conditions of this Agreement.
         </div>
 
         <div class="doc-paragraph">
-            <strong>NOW, THEREFORE,</strong> in consideration of the foregoing promises and mutual covenants set forth herein, 
-            the parties agree as follows:
+            <strong>NOW, THEREFORE,</strong> in consideration of the foregoing promises and mutual covenants set forth herein, the parties agree as follows:
         </div>
 
         <!-- Section 1: Services -->
         <h2 class="section-title">1. SERVICES:</h2>
         
-        <h3 class="subsection-title">1.1. Medical Billing Services:</h3>
+        <h3 class="subsection-title">1.1. Credentialing Services:</h3>
         <div class="doc-paragraph">
-            The Client hereby expressly authorizes MedLink Analytics LLC to prepare, process, and submit claims to commercial and government payors. MedLink Analytics LLC will apply its best efforts to obtain reimbursement for Client charges for all clinical procedures and medical services provided to patients. All such claims shall be submitted by MEDLINK ANALYTICS LLC in the Client's name and utilize provider numbers assigned to the Client by the respective third-party payor. Claims will be submitted either electronically or through paper submission, as directed by the third-party payor. Payment of all claims filed on behalf of the Client shall be directed to such accounts to which the Client has control, as may be required by third-party payors. MedLink Analytics LLC shall post payments received from the third-party payors to the patient's file. MedLink Analytics LLC will apply its best efforts to avoid any denials or rejections through claim scrubbing and coding audits. However, in the case of any denials, we have experienced resources that work aggressively on all denials as soon as they are received. The denials are reviewed by the Coding, QA, and Billing teams to make necessary corrections and resubmit such cases. The denials are checked in accordance with coding, insurance, and LCD/NCD guidelines to help prevent recurrence. MedLink Analytics LLC shall also prepare and send any appeals or redetermination letters required to reprocess denied claims. Benefit verification is included as part of the billing services at no additional charge.
+            MedLink Analytics LLC shall provide the following Credentialing Services to 
+            <input type="text" class="editable-field wide" id="businessName2" placeholder="your business name"> 
+            if the Client requires these services:
+        </div>
+
+        <div class="subsection-item">
+            <strong>i</strong> Submit and verify receipt of the credentialing applications to designated health plans;
+        </div>
+        <div class="subsection-item">
+            <strong>ii</strong> Follow up on the application with designated health plans;
+        </div>
+        <div class="subsection-item">
+            <strong>iii</strong> Document receipt of the requested information by the designated health plan;
+        </div>
+        <div class="subsection-item">
+            <strong>iv</strong> Conduct follow-up activities, document acceptance or rejection information from the health plan;
+        </div>
+        <div class="subsection-item">
+            <strong>v</strong> Create or modify the Client's CAQH database, NPI Registry, or apply for Telehealth licensure under the Interstate Medical Licensure Compact (IMLC).
         </div>
 
         <!-- Section 2: Client Responsibilities -->
@@ -446,50 +443,59 @@
         
         <h3 class="subsection-title">2.1. Reasonable Assistance:</h3>
         <div class="doc-paragraph">
-            The client agrees to provide MedLink Analytics LLC with all necessary records, information, and assistance to enable MedLink Analytics LLC to provide such Services. The client shall be responsible for ensuring the accuracy and completeness of coding associated with claims and for ensuring the medical necessity and appropriateness of the Services for which a bill will be submitted. The client also agrees to promptly provide MEDLINK ANALYTICS LLC all copies of all Explanation of Benefits forms received from third party payors as well as records of payments received directly from patients.
+            The client agrees to provide 
+            <input type="text" class="editable-field wide" id="businessName3" placeholder="your business name"> 
+            with all necessary documentation, information, and assistance to enable MedLink Analytics LLC to provide such Services. The client shall be responsible for ensuring the accuracy and completeness of all paperwork associated with credentialing and for ensuring the necessity and appropriateness of the Services which will be rendered by client. The client also agrees to promptly provide Medlink Analytics LLC the copies of all Explanation of any malpractice action taken against them. The client also agrees to promptly provide COMPANY NAME with all the correspondence received by insurance companies related to credentialing.
         </div>
 
         <h3 class="subsection-title">2.2. Systems Access:</h3>
         <div class="doc-paragraph">
-            The client hereby grants to MedLink Analytics LLC the right to access and use its EHR/EMR software, if any, to facilitate the preparation of medical claims. All patient information and data provided by the Client to MedLink Analytics LLC shall be kept confidential and shall only be disclosed to parties necessary to successfully process and submit claims on behalf of the Client.
+            The client hereby grants to MedLink Analytics LLC the right to access and use CAQH and PECOS. All information and data provided by the Client to MedLink Analytics LLC shall be kept confidential and shall only be disclosed to parties necessary to successfully process and submit credentialing application on behalf of the Client.
         </div>
 
         <h3 class="subsection-title">2.3. Client Acknowledgement:</h3>
         <div class="doc-paragraph">
-            The client acknowledges and agrees that the ultimate responsibility for all claims submitted is that of the Client. The client shall be responsible for maintaining all original source documents to enable it to verify and document the claims submitted to third-party payors. MedLink Analytics LLC shall have no liability or responsibility whatsoever regarding the accuracy or completeness of the coding or determinations regarding medical necessity.
+            The client acknowledges and agrees that the ultimate responsibility for providing all the information access and copies of the documents to facilitate the credentialing process. The client shall be responsible for maintaining all original source documents.
         </div>
 
         <!-- Section 3: Fees -->
         <h2 class="section-title">3. FEES:</h2>
         
-        <h3 class="subsection-title">3.1. Setup Cost:</h3>
+        <h3 class="subsection-title">3.1. Credentialing Services Fee:</h3>
         <div class="doc-paragraph">
-            There is no charge for the initial set up of the medical billing services.
-        </div>
-
-        <h3 class="subsection-title">3.2. Net Collections:</h3>
-        <div class="doc-paragraph">
-            The client shall pay MedLink Analytics LLC for medical billing services based on its total dollar amount of monthly net collections. The client agrees to pay MedLink Analytics LLC based on the below rates:
+            MedLink Analytics LLC will charge the client for Credentialing cost based on the below rates if the Client requires these services:
         </div>
 
         <table>
             <thead>
                 <tr>
                     <th>Services</th>
+                    <th>No of Insurances</th>
                     <th>Fee</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Billing Service</td>
-                    <td>3.5% of the insurance collection</td>
+                    <td>Credentialing per payer per provider</td>
+                    <td>Up to 10 Applications</td>
+                    <td>$75 per application</td>
+                </tr>
+                <tr>
+                    <td>Credentialing per payer per provider</td>
+                    <td>More than 10 Applications</td>
+                    <td>$70 per application</td>
+                </tr>
+                <tr>
+                    <td>State Licensing</td>
+                    <td>-</td>
+                    <td>$350 per License</td>
                 </tr>
             </tbody>
         </table>
 
-        <h3 class="subsection-title">3.3. Terms of Payment:</h3>
+        <h3 class="subsection-title">3.2. Terms of Payment:</h3>
         <div class="doc-paragraph">
-            MedLink Analytics LLC shall invoice Client at the beginning of each month for the prior month's Services by electronic or US mail. The invoice will summarize the cost based on the mutual understanding between both parties. Payments are due within seven (7) days of receipt of the invoice. The client agrees to pay MedLink Analytics LLC via bank ACH auto-pay or online wire.
+            MedLink Analytics LLC will issue an invoice to the client upon the successful submission of the applications to the insurance company. The invoice will summarize the cost based on the mutual understanding between both parties. Payments are due within seven (7) days of receipt of the invoice. The client agrees to pay MedLink Analytics LLC via bank ACH auto-pay or online wire.
         </div>
 
         <!-- Section 4: Confidentiality and HIPAA -->
@@ -500,22 +506,12 @@
             MedLink Analytics LLC and Client will abide by the covenants and provisions of the "Business Associates Agreement", which is incorporated herein by reference.
         </div>
 
-        <!-- Section 5: Term and Termination -->
-        <h2 class="section-title">5. TERM AND TERMINATION:</h2>
+        <!-- Section 5: Termination -->
+        <h2 class="section-title">5. TERMINATION:</h2>
         
-        <h3 class="subsection-title">5.1. Term:</h3>
+        <h3 class="subsection-title">5.1. Termination:</h3>
         <div class="doc-paragraph">
-            The agreement will be on a month-to-month basis starting from the Effective Date. It will automatically renew for successive one-month periods after the initial term, unless terminated earlier according to the terms outlined herein or by either party.
-        </div>
-
-        <h3 class="subsection-title">5.2. Termination:</h3>
-        <div class="doc-paragraph">
-            This Agreement shall remain in effect until terminated by either party. This Agreement may be terminated if there is a breach in contract or for simple convenience. The terminating party is responsible to provide Thirty (30) days written notice to the other party along with any explanation for the termination.
-        </div>
-
-        <h3 class="subsection-title">5.3. Rights on Termination:</h3>
-        <div class="doc-paragraph">
-            Upon termination, the Client shall be permitted to terminate MedLink Analytics LLC's access to its systems. The client shall be required to pay all fees accrued as of the date of termination plus any claims or charges that are pending or in-transit.
+            The agreement will terminate upon successful credentialing and payment of the invoice. If the client wishes to add new payors or additional providers to the practice/group, the agreement will automatically renew until credentialing is completed and the invoice is paid.
         </div>
 
         <!-- Page Break for Print -->
@@ -532,7 +528,7 @@
         <h3 class="subsection-title">6.2. Limitation of Liability:</h3>
         
         <div class="doc-paragraph">
-            <strong>6.2.1.</strong> The client hereby agrees to indemnify and hold MedLink Analytics LLC and its owners, directors, employees, and contractors harmless from and against all liability, claims, causes of action, damages, fines, assessments, penalties, costs (including reasonable attorney fees) and responsibility of any kind arising from the performance or non-performance of this agreement or any acts or omissions associated. Client shall hold MedLink Analytics LLC and its owners, directors, employees, and contractors harmless from and against any claims submitted on behalf of and in the name of the Client for which client has provided MedLink Analytics LLC false, fraudulent, incomplete, misleading, or otherwise incorrect information or data, including but not limited to, the coding of claims according to Section 2.1 above.
+            <strong>6.2.1.</strong> The client hereby agrees to indemnify and hold MedLink Analytics LLC and its owners, directors, employees, and contractors harmless from and against all liability, causes of action, damages, fines, assessments, penalties, costs (including reasonable attorney fees) and responsibility of any kind arising from the performance or non-performance of this agreement or any acts or omissions associated.
         </div>
 
         <div class="doc-paragraph">
@@ -544,7 +540,7 @@
         </div>
 
         <div class="doc-paragraph">
-            <strong>6.2.4.</strong> Client expressly acknowledges and agrees that in no case shall MedLink Analytics LLC's liability for damages, regardless of the form of the action, exceed the amount of fees paid by a client hereunder during the most recent three (3) months period immediately preceding the event giving rise to the claim. Notwithstanding anything to the contrary contained in this Agreement, neither party shall be liable to the other for any third-party claims even if a party has been apprised of the likelihood of such damages.
+            <strong>6.2.4.</strong> Anything to the contrary contained in this Agreement, neither party shall be liable to the other for any third-party claims even if a party has been apprised of the likelihood of such damages.
         </div>
 
         <div class="doc-paragraph">
@@ -584,9 +580,9 @@
             <div class="signature-block">
                 <div class="signature-title">COVERED ENTITY</div>
                 
-                <div class="signature-field">
-                    <label class="signature-label">Entity Name:</label>
-                    <input type="text" class="editable-field full-width" id="coveredEntityName" placeholder="Enter Covered Entity Name">
+                <div class="signature-field" style="margin-bottom: 20px;">
+                    <label class="signature-label">Business Name:</label>
+                    <input type="text" class="editable-field full-width" id="businessName4" placeholder="your business name">
                 </div>
 
                 <div class="signature-row">
@@ -614,12 +610,12 @@
                 <div class="signature-row">
                     <div class="signature-field">
                         <label class="signature-label">Print Name:</label>
-                        <input type="text" class="editable-field full-width" id="coveredPrintName" placeholder="Enter Name">
+                        <input type="text" class="editable-field full-width" id="coveredPrintName" placeholder="your name">
                     </div>
                     
                     <div class="signature-field">
                         <label class="signature-label">Title:</label>
-                        <input type="text" class="editable-field full-width" id="coveredTitle" placeholder="Enter Title">
+                        <input type="text" class="editable-field full-width" id="coveredTitle" placeholder="Title">
                     </div>
                 </div>
             </div>
@@ -632,13 +628,20 @@
                     <div class="signature-field">
                         <label class="signature-label">Signature:</label>
                         <div class="signature-pad-container">
+                            <div class="signature-controls">
+                                <div class="signature-field">
+                        <label class="signature-label">Signature:</label>
+                        <div class="signature-pad-container">
                             <img src="ceo-signature.png">
+                        </div>
+                    </div>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="signature-field">
                         <label class="signature-label">Date:</label>
-                        <input type="date" class="date-field" id="businessDate" value="">
+                        <input type="date" class="date-field" id="businessDate" value="2026-02-17">
                     </div>
                 </div>
 
@@ -658,7 +661,7 @@
 
         <!-- Footer -->
         <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #666;">
-             <center>
+           <center>
                     <img src="../footer-medlink.png">
             </center>
         </div>
@@ -672,14 +675,27 @@
             businessSignatureCanvas: null
         };
 
-        // Set today's date for business associate
+        // Set today's date and sync business name fields
         document.addEventListener('DOMContentLoaded', function() {
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('businessDate').value = today;
             
             // Initialize both signature canvases
             initSignaturePad('coveredSignatureCanvas');
             initSignaturePad('businessSignatureCanvas');
+            
+            // Sync all business name fields
+            const businessNameFields = ['businessName1', 'businessName2', 'businessName3', 'businessName4'];
+            
+            businessNameFields.forEach(fieldId => {
+                document.getElementById(fieldId).addEventListener('input', function() {
+                    const value = this.value;
+                    businessNameFields.forEach(id => {
+                        if (id !== fieldId) {
+                            document.getElementById(id).value = value;
+                        }
+                    });
+                });
+            });
         });
 
         function initSignaturePad(canvasId) {
@@ -810,31 +826,38 @@
             reader.readAsDataURL(file);
         }
 
-        // Auto-save functionality (optional)
+        // Auto-save functionality
         function autoSave() {
             const formData = {
                 agreementDate: document.getElementById('agreementDate').value,
-                clientName: document.getElementById('clientName').value,
-                clientAddress: document.getElementById('clientAddress').value,
-                billingFee: document.getElementById('billingFee').value,
-                coveredEntityName: document.getElementById('coveredEntityName').value,
+                businessName: document.getElementById('businessName1').value,
+                businessAddress: document.getElementById('businessAddress').value,
                 coveredPrintName: document.getElementById('coveredPrintName').value,
                 coveredTitle: document.getElementById('coveredTitle').value,
                 coveredDate: document.getElementById('coveredDate').value
             };
             
-            localStorage.setItem('serviceAgreement', JSON.stringify(formData));
+            localStorage.setItem('credentialingAgreement', JSON.stringify(formData));
         }
 
         // Load saved data on page load
         window.addEventListener('load', function() {
-            const savedData = localStorage.getItem('serviceAgreement');
+            const savedData = localStorage.getItem('credentialingAgreement');
             if (savedData) {
                 const formData = JSON.parse(savedData);
-                Object.keys(formData).forEach(key => {
-                    const element = document.getElementById(key);
-                    if (element) element.value = formData[key];
-                });
+                
+                if (formData.agreementDate) document.getElementById('agreementDate').value = formData.agreementDate;
+                if (formData.businessAddress) document.getElementById('businessAddress').value = formData.businessAddress;
+                if (formData.coveredPrintName) document.getElementById('coveredPrintName').value = formData.coveredPrintName;
+                if (formData.coveredTitle) document.getElementById('coveredTitle').value = formData.coveredTitle;
+                if (formData.coveredDate) document.getElementById('coveredDate').value = formData.coveredDate;
+                
+                // Sync business name to all fields
+                if (formData.businessName) {
+                    ['businessName1', 'businessName2', 'businessName3', 'businessName4'].forEach(id => {
+                        document.getElementById(id).value = formData.businessName;
+                    });
+                }
             }
         });
 
