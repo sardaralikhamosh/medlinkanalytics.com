@@ -541,7 +541,7 @@
                 <div class="pdf-container" id="pdfContainer">
                     <iframe 
                         id="pdfFrame"
-                        src="Company_Profile.pdf"
+                        src="admin/Company_Profile.pdf"
                         title="MedLink Analytics Company Profile"
                         onload="onPDFLoaded()"
                         onerror="onPDFError()">
@@ -554,8 +554,8 @@
     <script>
         function downloadPDF() {
             const link = document.createElement('a');
-            link.href = 'Company_Profile.pdf';
-            link.download = 'Company_Profile.pdf';
+            link.href = 'admin/Company_Profile.pdf';
+            link.download = 'admin/Company_Profile.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -586,7 +586,7 @@
                         <p style="color: var(--text-muted); margin-bottom: 24px; max-width: 300px;">
                             There was an issue loading the PDF. Please try downloading it directly or contact us.
                         </p>
-                        <a href="Company_Profile.pdf" 
+                        <a href="admin/Company_Profile.pdf" 
                            style="display: inline-block; padding: 12px 24px; background: var(--teal); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
                             Download PDF
                         </a>

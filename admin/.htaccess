@@ -1,0 +1,53 @@
+# ============================================
+# APACHE BASIC AUTHENTICATION
+# Protect /admin directory with password
+# ============================================
+
+# Enable authentication
+AuthType Basic
+AuthName "Restricted Access - Admin Area"
+
+# IMPORTANT: Update this path to match your server!
+# Try these common paths (uncomment the correct one):
+
+# Option 1: For cPanel hosting (most common)
+# AuthUserFile /home/medlink/public_html/admin/.htpasswd
+
+# Option 2: For cPanel with domain-specific path
+# AuthUserFile /home/medlink/domains/medlinkanalytics.com/public_html/admin/.htpasswd
+
+# Option 3: For standard VPS/Dedicated server
+# AuthUserFile /var/www/html/medlinkanalytics.com/admin/.htpasswd
+
+# Option 4: For nginx-based servers
+# AuthUserFile /usr/share/nginx/html/admin/.htpasswd
+
+# Option 5: Relative path (try if absolute paths don't work)
+AuthUserFile .htpasswd
+
+# Require valid user to access
+Require valid-user
+
+# ============================================
+# SECURITY ENHANCEMENTS
+# ============================================
+
+# Disable directory browsing
+Options -Indexes
+
+# Prevent access to .htpasswd and .htaccess files
+<Files ".ht*">
+    Require all denied
+</Files>
+
+# Prevent access to sensitive files
+<FilesMatch "\.(env|log|ini|conf|bak)$">
+    Require all denied
+</FilesMatch>
+
+# ============================================
+# ERROR DOCUMENTS
+# ============================================
+
+ErrorDocument 401 "Authentication Required. Please contact administrator."
+ErrorDocument 403 "Access Forbidden."

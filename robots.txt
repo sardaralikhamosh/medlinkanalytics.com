@@ -1,4 +1,31 @@
+# MedLink Analytics - Robots.txt
+# Last Updated: January 2026
+
+# Default rule for all search engines
 User-agent: *
+
+# IMPORTANT: Disallow rules must come BEFORE Allow rules
+# Block admin area and sensitive directories
+Disallow: /admin/
+Disallow: /administrator/
+Disallow: /wp-admin/
+Disallow: /backup/
+Disallow: /private/
+
+# Block access to sensitive file types
+Disallow: /*.sql$
+Disallow: /*.log$
+Disallow: /*.bak$
+Disallow: /*.env$
+Disallow: /*.config$
+Disallow: /*.ini$
+
+# Allow access to public areas (everything else)
 Allow: /
 
+# Sitemap location
 Sitemap: https://medlinkanalytics.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+# Set to 10 seconds between requests
+Crawl-delay: 10

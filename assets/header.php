@@ -104,10 +104,11 @@ $base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : 
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="<?php echo $base_url; ?>" onclick="closeMenu()">Home</a></li>
-                <li><a href="<?php echo $base_url; ?>#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="<?php echo $base_url; ?>services" onclick="closeMenu()">Services</a></li>
                 <li><a href="<?php echo $base_url; ?>#why-us" onclick="closeMenu()">Why Us</a></li>
-                <li><a href="<?php echo $base_url; ?>#about" onclick="closeMenu()">About</a></li>
-                <li><a href="<?php echo $base_url; ?>#contact" onclick="closeMenu()">Contact</a></li>
+                <li><a href="<?php echo $base_url; ?>about" onclick="closeMenu()">About</a></li>
+                <li><a href="<?php echo $base_url; ?>contact" onclick="closeMenu()">Contact</a></li>
+                <li><a href="<?php echo $base_url; ?>blog" onclick="closeMenu()">Blog</a></li>
             </ul>
         </nav>
     </header>

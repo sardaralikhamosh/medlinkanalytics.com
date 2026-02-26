@@ -465,7 +465,6 @@
         <div class="doc-paragraph">
             MedLink Analytics LLC will charge the client for Credentialing cost based on the below rates if the Client requires these services:
         </div>
-
         <table>
             <thead>
                 <tr>
@@ -477,18 +476,8 @@
             <tbody>
                 <tr>
                     <td>Credentialing per payer per provider</td>
-                    <td>Up to 10 Applications</td>
-                    <td>$75 per application</td>
-                </tr>
-                <tr>
-                    <td>Credentialing per payer per provider</td>
-                    <td>More than 10 Applications</td>
-                    <td>$70 per application</td>
-                </tr>
-                <tr>
-                    <td>State Licensing</td>
-                    <td>-</td>
-                    <td>$350 per License</td>
+                    <td><input type="text" class="editable-field wide" id="businessName3" placeholder="enter number of payers(optional)"> </td>
+                    <td>$80 per application</td>--
                 </tr>
             </tbody>
         </table>

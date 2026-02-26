@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MedLink Analytics – Letter Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e8e8e8;
+      font-family: 'Source Sans 3', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ─── TOOLBAR ──────────────────────────────────────────── */
+    #toolbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: #1a2b3c;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      flex-wrap: wrap;
+    }
+
+    #toolbar .brand {
+      font-family: 'Libre Baskerville', serif;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      margin-right: 12px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    #toolbar .sep { width: 1px; height: 24px; background: rgba(255,255,255,0.2); margin: 0 4px; }
+
+    #toolbar button {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      font-family: 'Source Sans 3', sans-serif;
+      letter-spacing: 0.3px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    #toolbar button:hover { background: rgba(255,255,255,0.22); }
+    #toolbar button.primary {
+      background: #00a6c4;
+      border-color: #00a6c4;
+      font-weight: 600;
+    }
+    #toolbar button.primary:hover { background: #0092ae; }
+
+    #toolbar select {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 5px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    #toolbar select option { background: #1a2b3c; }
+
+    .toolbar-label {
+      color: rgba(255,255,255,0.55);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    /* ─── PAGE WRAPPER ─────────────────────────────────────── */
+    #page-wrap {
+      margin-top: 60px;
+      padding: 30px 0 60px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ─── A4 LETTER ────────────────────────────────────────── */
+    #letter {
+      width: 210mm;
+      height: 297mm;
+      min-height: unset;
+      background: #fff;
+      position: relative;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Watermark */
+    #letter::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('watermark.jpg') center center / 65% auto no-repeat;
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── HEADER ───────────────────────────────────────────── */
+    .letter-header {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .letter-header img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ─── CONTENT AREA ─────────────────────────────────────── */
+    .letter-body {
+      flex: 1;
+      padding: 28px 50px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── FIELDS ───────────────────────────────────────────── */
+    .field-row {
+      margin-bottom: 6px;
+    }
+
+    .field-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #00a6c4;
+      margin-bottom: 2px;
+      display: block;
+      user-select: none;
+    }
+
+    [contenteditable] {
+      outline: none;
+      border-radius: 2px;
+      transition: background 0.15s, box-shadow 0.15s;
+      min-height: 1em;
+      position: relative;
+    }
+    [contenteditable]:hover {
+      background: rgba(0,166,196,0.06);
+    }
+    [contenteditable]:focus {
+      background: rgba(0,166,196,0.09);
+      box-shadow: 0 0 0 1.5px rgba(0,166,196,0.35);
+    }
+
+    /* ─── LETTER TYPOGRAPHY ────────────────────────────────── */
+    .f-date {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10.5pt;
+      color: #222;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .f-recipient {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10.5pt;
+      color: #222;
+      line-height: 1.6;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .subject-row {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .subject-prefix {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #1a2b3c;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .f-subject {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #1a2b3c;
+      text-decoration: underline;
+      flex: 1;
+      display: block;
+    }
+
+    .f-salutation {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10.5pt;
+      color: #222;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .f-body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10.5pt;
+      color: #222;
+      line-height: 1.7;
+      text-align: justify;
+      display: block;
+      margin-bottom: 14px;
+      white-space: pre-wrap;
+    }
+
+    /* bullet support inside body */
+    .f-body ul, .f-body ol {
+      padding-left: 22px;
+      margin: 8px 0;
+    }
+    .f-body li { margin-bottom: 4px; }
+
+    /* ─── CLOSING ──────────────────────────────────────────── */
+    .closing-section {
+      margin-top: 10px;
+    }
+    .f-closing {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10.5pt;
+      color: #222;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ─── SIGNATURE BOX ────────────────────────────────────── */
+    .sig-box {
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+    .sig-img-wrap {
+      width: 110px;
+      height: 52px;
+      position: relative;
+      cursor: pointer;
+      border: 1.5px dashed rgba(0,166,196,0.4);
+      border-radius: 3px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .sig-img-wrap:hover { border-color: rgba(0,166,196,0.8); }
+    .sig-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .sig-img-wrap .sig-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,166,196,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #00a6c4;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .sig-img-wrap:hover .sig-overlay { opacity: 1; }
+    #sig-upload { display: none; }
+
+    .f-signatory {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10.5pt;
+      color: #222;
+      line-height: 1.6;
+      display: block;
+    }
+    .f-signatory strong, .signatory-name {
+      font-weight: 700;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────────── */
+    .letter-footer {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+    }
+    .letter-footer img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ─── PRINT STYLES ─────────────────────────────────────── */
+    @media print {
+
+      /* Main page — zero margin, exact A4 */
+      @page {
+        size: A4 portrait;
+        margin: 0mm;
+      }
+
+      /* Suppress any blank even/second page completely */
+      @page :blank {
+        display: none;
+      }
+
+      /* Kill all scroll/overflow at root */
+      html {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+      }
+
+      body {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        /* Prevent body from generating extra pages */
+        display: block !important;
+      }
+
+      #toolbar { display: none !important; }
+
+      #page-wrap {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        overflow: hidden !important;
+      }
+
+      #letter {
+        position: relative !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: unset !important;
+        max-height: 297mm !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+        /* Hard stop — no content beyond this box */
+        clip: rect(0, 210mm, 297mm, 0) !important;
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-before: avoid !important;
+        break-after: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      /* Tighten padding for print */
+      .letter-body {
+        padding: 18px 50px 10px !important;
+      }
+
+      .field-label { display: none !important; }
+
+      [contenteditable] {
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .sig-img-wrap {
+        border: none !important;
+      }
+      .sig-overlay { display: none !important; }
+
+      #letter::before {
+        opacity: 0.07;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* Force background/image printing */
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ TOOLBAR ══════════════════════════════════════════════ -->
+<div id="toolbar">
+  <span class="brand">✦ MedLink Letter Editor</span>
+  <div class="sep"></div>
+
+  <span class="toolbar-label">Format:</span>
+  <button onclick="execCmd('bold')"><b>B</b></button>
+  <button onclick="execCmd('italic')"><i>I</i></button>
+  <button onclick="execCmd('underline')"><u>U</u></button>
+  <div class="sep"></div>
+
+  <span class="toolbar-label">Align:</span>
+  <button onclick="execCmd('justifyLeft')">⬛ L</button>
+  <button onclick="execCmd('justifyCenter')">≡ C</button>
+  <button onclick="execCmd('justifyRight')">⬛ R</button>
+  <button onclick="execCmd('justifyFull')">≡ J</button>
+  <div class="sep"></div>
+
+  <button onclick="execCmd('insertUnorderedList')">• List</button>
+  <button onclick="execCmd('insertOrderedList')">1. List</button>
+  <div class="sep"></div>
+
+  <select id="fontSize" onchange="changeFontSize(this.value)" title="Font size">
+    <option value="">Size</option>
+    <option value="1">8pt</option>
+    <option value="2">10pt</option>
+    <option value="3">12pt</option>
+    <option value="4">14pt</option>
+    <option value="5">18pt</option>
+  </select>
+  <div class="sep"></div>
+
+  <button onclick="clearFormatting()">✕ Clear</button>
+  <div class="sep"></div>
+
+  <button class="primary" onclick="window.print()">🖨 Print / Save PDF</button>
+</div>
+
+<!-- ═══ PAGE ══════════════════════════════════════════════════ -->
+<div id="page-wrap">
+  <div id="letter">
+
+    <!-- HEADER (fixed image) -->
+    <div class="letter-header">
+      <img src="header.png" alt="MedLink Analytics Header"/>
+    </div>
+
+    <!-- BODY CONTENT -->
+    <div class="letter-body">
+
+      <!-- Date -->
+      <div class="field-row">
+        <span class="field-label">Date</span>
+        <span class="f-date" contenteditable="true" id="f-date">February 25, 2026</span>
+      </div>
+
+      <!-- Recipient -->
+      <div class="field-row">
+        <span class="field-label">Recipient</span>
+        <span class="f-recipient" contenteditable="true" id="f-recipient"><strong>Mr. James Harrington</strong>
+Procurement Manager
+Vertex Industries Inc.
+Suite 900, Burj Khalifa District
+Dubai, United Arab Emirates</span>
+      </div>
+
+      <!-- Subject -->
+      <div class="subject-row">
+        <span class="subject-prefix">Subject:</span>
+        <span class="f-subject" contenteditable="true" id="f-subject">Proposal for Facility Management Services – Contract Renewal 2026</span>
+      </div>
+
+      <!-- Salutation -->
+      <div class="field-row">
+        <span class="field-label">Salutation</span>
+        <span class="f-salutation" contenteditable="true" id="f-salutation">Dear Mr. Harrington,</span>
+      </div>
+
+      <!-- Body -->
+      <div class="field-row">
+        <span class="field-label">Body</span>
+        <div class="f-body" contenteditable="true" id="f-body">We are writing to express our continued interest in providing facility management and technical support services to Vertex Industries Inc. As our current service agreement is set to expire on March 31, 2026, we would like to take this opportunity to propose a renewed partnership that reflects the evolving needs of your organization.
+
+For the upcoming contract period (April 1, 2026 – March 31, 2027), we propose the following key highlights:
+<ul>
+  <li>Comprehensive preventive maintenance covering all mechanical, electrical, and plumbing systems.</li>
+  <li>Dedicated on-site technician available five days per week, with 24/7 emergency response.</li>
+  <li>Quarterly performance reporting and asset condition assessments.</li>
+  <li>A 5% reduction in the annual service retainer as a loyalty benefit.</li>
+</ul>
+We sincerely appreciate the trust and confidence Vertex Industries Inc. has placed in Nexora Solutions, and we look forward to continuing this valued partnership.</div>
+      </div>
+
+      <!-- Closing -->
+      <div class="closing-section">
+        <div class="field-row">
+          <span class="field-label">Closing</span>
+          <span class="f-closing" contenteditable="true" id="f-closing">Yours sincerely,</span>
+        </div>
+
+        <!-- Signature image box -->
+        <div class="sig-box">
+          <div class="sig-img-wrap" onclick="document.getElementById('sig-upload').click()" title="Click to replace signature">
+            <img src="ceo-signature.png" alt="CEO Signature" id="sig-preview" onerror="this.style.opacity='0.3'"/>
+            <div class="sig-overlay">Click to replace</div>
+          </div>
+          <input type="file" id="sig-upload" accept="image/*" onchange="replaceSig(this)"/>
+        </div>
+
+        <!-- Signatory name & title -->
+        <div class="field-row">
+          <span class="field-label">Signatory</span>
+          <span class="f-signatory" contenteditable="true" id="f-signatory"><span class="signatory-name"><strong>Adnan Murad</strong></span>
+Chief Executive Officer
+MedLink Analytics LLC</span>
+        </div>
+      </div>
+
+    </div><!-- /letter-body -->
+
+    <!-- FOOTER (fixed image) -->
+    <div class="letter-footer">
+      <img src="footer.png" alt="MedLink Analytics Footer"/>
+    </div>
+
+  </div><!-- /letter -->
+</div><!-- /page-wrap -->
+
+<script>
+  // ─── Rich text commands ───────────────────────────────────
+  function execCmd(cmd, val = null) {
+    document.execCommand(cmd, false, val);
+  }
+
+  function changeFontSize(val) {
+    if (val) {
+      document.execCommand('fontSize', false, val);
+      document.getElementById('fontSize').value = '';
+    }
+  }
+
+  function clearFormatting() {
+    document.execCommand('removeFormat', false, null);
+  }
+
+  // ─── Signature upload ─────────────────────────────────────
+  function replaceSig(input) {
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('sig-preview').src = e.target.result;
+        document.getElementById('sig-preview').style.opacity = '1';
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  // ─── Keep Enter key natural inside contenteditable ───────
+  document.querySelectorAll('[contenteditable]').forEach(el => {
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        // allow default browser behavior (inserts <div> or <br>)
+      }
+    });
+  });
+
+  // ─── Auto-date helper ─────────────────────────────────────
+  (function() {
+    const dateEl = document.getElementById('f-date');
+    // Only set if still default (user hasn't edited)
+    if (dateEl.textContent.trim() === '') {
+      const now = new Date();
+      dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+  })();
+</script>
+
+</body>
+</html>

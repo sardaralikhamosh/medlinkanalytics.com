@@ -555,7 +555,7 @@
                     
                     <div class="signature-field">
                         <label class="signature-label">Date:</label>
-                        <input type="date" class="date-field" id="businessDate" value="2026-02-12">
+                        <input type="date" class="date-field" id="businessDate" value="2026-02-16">
                     </div>
                 </div>
 

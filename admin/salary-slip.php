@@ -526,33 +526,216 @@
         }
 
         @media print {
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
             body {
-                background: white;
-                padding: 0;
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
             }
+            
             .controls {
-                display: none;
+                display: none !important;
             }
+            
+            .container {
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
             .salary-slip {
-                box-shadow: none;
-                border: 1px solid var(--border);
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
             }
-            .delete-row-btn, .add-row-btn {
-                display: none;
+            
+            /* Header optimization */
+            .slip-header {
+                padding: 0.8rem 1rem !important;
+                page-break-after: avoid;
             }
-            .slip-footer {
+            
+            .slip-header::before,
+            .slip-header::after {
+                display: none !important;
+            }
+            
+            .company-info img {
+                max-height: 60px !important;
+                width: auto !important;
+                display: block;
+            }
+            
+            /* Title section */
+            .slip-title {
+                padding: 0.8rem 1rem !important;
+                page-break-after: avoid;
+            }
+            
+            .slip-title h2 {
+                font-size: 1.2rem !important;
+                margin-bottom: 0.4rem !important;
+            }
+            
+            .date-info {
+                gap: 0.8rem !important;
+                margin-top: 0.4rem !important;
+            }
+            
+            .date-item {
+                gap: 0.15rem !important;
+            }
+            
+            .date-label {
+                font-size: 0.7rem !important;
+            }
+            
+            .date-select, .date-input {
+                border: 1px solid var(--border) !important;
+                background: white !important;
+                appearance: none !important;
+                -webkit-appearance: none !important;
+                -moz-appearance: none !important;
+                padding: 0.25rem 0.5rem !important;
+                font-size: 0.8rem !important;
+                min-width: auto !important;
+            }
+            
+            /* Body content */
+            .slip-body {
+                padding: 0.8rem 1rem !important;
+            }
+            
+            .section {
+                margin-bottom: 0.8rem !important;
                 page-break-inside: avoid;
             }
-            /* Hide interactive date elements in print */
-            .date-select, .date-input {
-                border: none;
-                background: transparent;
-                appearance: none;
-                -webkit-appearance: none;
-                -moz-appearance: none;
+            
+            .section-title {
+                font-size: 0.95rem !important;
+                margin-bottom: 0.5rem !important;
+                padding-bottom: 0.3rem !important;
             }
+            
+            /* Employee info grid - 3 columns for better space usage */
+            .info-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.5rem !important;
+            }
+            
+            .info-item {
+                gap: 0.15rem !important;
+            }
+            
+            .info-label {
+                font-size: 0.7rem !important;
+            }
+            
+            .info-value {
+                font-size: 0.85rem !important;
+                padding: 0.3rem 0.4rem !important;
+                min-height: auto !important;
+            }
+            
+            /* Tables */
+            .earnings-table, .deductions-table {
+                font-size: 0.85rem !important;
+                margin-top: 0.4rem !important;
+            }
+            
+            .earnings-table th, .deductions-table th {
+                padding: 0.4rem !important;
+                font-size: 0.75rem !important;
+            }
+            
+            .earnings-table td, .deductions-table td {
+                padding: 0.4rem !important;
+            }
+            
+            .editable-cell {
+                font-size: 0.8rem !important;
+                padding: 0.25rem !important;
+                border: 1px solid var(--border) !important;
+            }
+            
+            /* Hide action buttons and column */
+            .delete-row-btn, .add-row-btn {
+                display: none !important;
+            }
+            
+            .earnings-table th:last-child,
+            .earnings-table td:last-child,
+            .deductions-table th:last-child,
+            .deductions-table td:last-child {
+                display: none !important;
+            }
+            
+            /* Summary */
+            .summary {
+                padding: 0.8rem !important;
+                margin-top: 0.8rem !important;
+                page-break-inside: avoid;
+            }
+            
+            .summary-row {
+                padding: 0.4rem 0 !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .summary-row.total {
+                padding-top: 0.6rem !important;
+                margin-top: 0.4rem !important;
+                font-size: 1rem !important;
+            }
+            
+            .summary-row.total .summary-value {
+                font-size: 1.2rem !important;
+            }
+            
+            /* Footer */
+            .slip-footer {
+                padding: 0.8rem 1rem !important;
+                page-break-inside: avoid;
+            }
+            
+            .slip-footer img {
+                max-height: 50px !important;
+                width: auto !important;
+                display: block;
+                margin: 0 auto;
+            }
+            
+            .slip-footer p {
+                display: none !important;
+            }
+            
+            /* Page settings */
             @page {
+                size: A4 portrait;
                 margin: 0.5cm;
+            }
+            
+            /* Force single page */
+            html, body {
+                height: auto !important;
+                overflow: visible !important;
+            }
+            
+            /* Prevent page breaks in sections */
+            .slip-header,
+            .slip-title,
+            .section,
+            .summary,
+            .slip-footer {
+                page-break-inside: avoid !important;
             }
         }
 
@@ -596,8 +779,8 @@
                     <option value="0004">0004 - Kashif</option>
                     <option value="0005">0005 - Qasim Baig</option>
                     <option value="0006">0006 - Waqar</option>
-                    <option value="0007">0007 - Azhar Ali</option>
-                    <option value="0008">0008 - Zakir Ali</option>
+                    <option value="0007">0007 - Zakir Ali</option>
+                    <option value="0008">0008 - Azhar Ali</option>
                 </select>
             </div>
 
@@ -617,7 +800,7 @@
         <div class="salary-slip" id="salarySlip">
             <div class="slip-header">
                 <div class="company-info">
-                    <img src="../header-medlink.png" alt="MedLink Analytics">
+                    <img src="../header-medlinkanalytics.png" alt="MedLink Analytics">
                 </div>
             </div>
 
@@ -750,7 +933,7 @@
             </div>
 
             <div class="slip-footer">
-                <img src="../header-medlink.png" alt="MedLink Analytics">
+                <img src="../footer-medlink.png" alt="MedLink Analytics">
             </div>
         </div>
     </div>
@@ -776,7 +959,7 @@
             }
         }
 
-        // Mock database - Replace this with actual database calls
+        // Employee database with actual company data
         const employeeDatabase = {
             "0001": {
                 name: "Adnan Murad",
@@ -786,14 +969,14 @@
                 bankAccount: "+92 318 8187773",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 00 },
-                    { description: "Medical Allowance", amount: 00 },
-                    { description: "Performance Bonus", amount: 00 }
+                    { description: "House Rent Allowance", amount: 0 },
+                    { description: "Medical Allowance", amount: 0 },
+                    { description: "Performance Bonus", amount: 0 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 00 },
-                    { description: "Insurance", amount: 00 },
-                    { description: "Provident Fund", amount: 00 }
+                    { description: "Tax Deduction", amount: 0 },
+                    { description: "Insurance", amount: 0 },
+                    { description: "Provident Fund", amount: 0 }
                 ]
             },
             "0002": {
@@ -804,14 +987,14 @@
                 bankAccount: "+92 316 1883266",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 00 },
-                    { description: "Medical Allowance", amount: 00 },
-                    { description: "Performance Bonus", amount: 00 }
+                    { description: "House Rent Allowance", amount: 0 },
+                    { description: "Medical Allowance", amount: 0 },
+                    { description: "Performance Bonus", amount: 0 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 00 },
-                    { description: "Insurance", amount: 00 },
-                    { description: "Provident Fund", amount: 00 }
+                    { description: "Tax Deduction", amount: 0 },
+                    { description: "Insurance", amount: 0 },
+                    { description: "Provident Fund", amount: 0 }
                 ]
             },
             "0003": {
@@ -823,14 +1006,14 @@
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
                     { description: "House Rent Allowance", amount: 3000 },
-                    { description: "Medical Allowance", amount: 00 },
-                    { description: "Performance Bonus", amount: 00 },
-                    { description: "Management Allowance", amount: 00 }
+                    { description: "Medical Allowance", amount: 0 },
+                    { description: "Performance Bonus", amount: 0 },
+                    { description: "Management Allowance", amount: 0 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 00 },
-                    { description: "Insurance", amount: 00 },
-                    { description: "Provident Fund", amount: 00 }
+                    { description: "Tax Deduction", amount: 0 },
+                    { description: "Insurance", amount: 0 },
+                    { description: "Provident Fund", amount: 0 }
                 ]
             },
             "0004": {
@@ -841,14 +1024,14 @@
                 bankAccount: "31473910000031-30",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 00 },
-                    { description: "Medical Allowance", amount: 00 },
-                    { description: "Performance Bonus", amount: 00 }
+                    { description: "House Rent Allowance", amount: 0 },
+                    { description: "Medical Allowance", amount: 0 },
+                    { description: "Performance Bonus", amount: 0 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 00 },
-                    { description: "Insurance", amount: 00 },
-                    { description: "Provident Fund", amount: 00 }
+                    { description: "Tax Deduction", amount: 0 },
+                    { description: "Insurance", amount: 0 },
+                    { description: "Provident Fund", amount: 0 }
                 ]
             },
             "0005": {
@@ -859,15 +1042,15 @@
                 bankAccount: "21774181814279",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 00 },
-                    { description: "Medical Allowance", amount: 00 },
-                    { description: "Performance Bonus", amount: 00 },
-                    { description: "Management Allowance", amount: 00 }
+                    { description: "House Rent Allowance", amount: 0 },
+                    { description: "Medical Allowance", amount: 0 },
+                    { description: "Performance Bonus", amount: 0 },
+                    { description: "Management Allowance", amount: 0 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 00 },
-                    { description: "Insurance", amount: 00 },
-                    { description: "Provident Fund", amount: 00 }
+                    { description: "Tax Deduction", amount: 0 },
+                    { description: "Insurance", amount: 0 },
+                    { description: "Provident Fund", amount: 0 }
                 ]
             },
             "0006": {
@@ -878,34 +1061,34 @@
                 bankAccount: "217741816276-32",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 00 },
-                    { description: "Medical Allowance", amount: 00 }
+                    { description: "House Rent Allowance", amount: 0 },
+                    { description: "Medical Allowance", amount: 0 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 00 },
-                    { description: "Insurance", amount: 00 },
-                    { description: "Provident Fund", amount: 00 }
-                ]
-            },
-            "0007": {
-                name: "Azhar Ali",
-                designation: "-",
-                department: "Medical Billing",
-                doj: "01/12/20236",
-                bankAccount: "+923554214775",
-                earnings: [
-                    { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 00 },
-                    { description: "Medical Allowance", amount: 00 },
-                    { description: "Performance Bonus", amount: 00 }
-                ],
-                deductions: [
-                    { description: "Tax Deduction", amount: 00 },
-                    { description: "Insurance", amount: 00 },
-                    { description: "Provident Fund", amount: 00 }
+                    { description: "Tax Deduction", amount: 0 },
+                    { description: "Insurance", amount: 0 },
+                    { description: "Provident Fund", amount: 0 }
                 ]
             },
             "0008": {
+                name: "Azhar Ali",
+                designation: "-",
+                department: "Medical Billing",
+                doj: "01/12/2026",
+                bankAccount: "03273344778",
+                earnings: [
+                    { description: "Basic Salary", amount: 50000 },
+                    { description: "House Rent Allowance", amount: 0 },
+                    { description: "Medical Allowance", amount: 0 },
+                    { description: "Performance Bonus", amount: 0 }
+                ],
+                deductions: [
+                    { description: "Tax Deduction", amount: 0 },
+                    { description: "Insurance", amount: 0 },
+                    { description: "Provident Fund", amount: 0 }
+                ]
+            },
+            "0007": {
                 name: "Zakir Ali",
                 designation: "-",
                 department: "Operations",
@@ -913,14 +1096,14 @@
                 bankAccount: "03491899706",
                 earnings: [
                     { description: "Basic Salary", amount: 50000 },
-                    { description: "House Rent Allowance", amount: 00 },
-                    { description: "Medical Allowance", amount: 00 },
-                    { description: "Performance Bonus", amount: 00 }
+                    { description: "House Rent Allowance", amount: 0 },
+                    { description: "Medical Allowance", amount: 0 },
+                    { description: "Performance Bonus", amount: 0 }
                 ],
                 deductions: [
-                    { description: "Tax Deduction", amount: 00 },
-                    { description: "Insurance", amount: 00 },
-                    { description: "Provident Fund", amount: 00 }
+                    { description: "Tax Deduction", amount: 0 },
+                    { description: "Insurance", amount: 0 },
+                    { description: "Provident Fund", amount: 0 }
                 ]
             }
         };

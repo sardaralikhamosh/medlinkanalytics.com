@@ -659,7 +659,7 @@ $remaining_minutes = floor($remaining_time / 60);
         <div class="cards-grid">
             <!-- Salary Slip Card -->
             <a href="salary-slip" class="card salary">
-                <span class="card-badge">Popular</span>
+                <span class="card-badge">Salary Slip</span>
                 <div class="card-icon">💰</div>
                 <h3 class="card-title">Salary Slip Generator</h3>
                 <p class="card-description">
@@ -670,27 +670,39 @@ $remaining_minutes = floor($remaining_time / 60);
                     <span>→</span>
                 </span>
             </a>
-            <!-- Employee Registration Form -->
-            <a href="employee-registration-form" class="card salary">
-                <span class="card-badge">Administration</span>
-                <div class="card-icon"></div>
-                <h3 class="card-title">Employee Registration</h3>
+            <!-- Billing Aggrement -->
+            <a href="billing-services-agreement" class="card salary">
+                <span class="card-badge">Billing Agremment</span>
+                <div class="card-icon">📋</div>
+                <h3 class="card-title">Billing Agremment</h3>
                 <p class="card-description">
-                    Create and manage professional Employees Registration Form with dynamic employee data.
+                    Create and manage professional Billing Agreement with dynamic data.
+                </p>
+                <span class="card-link">
+                    Open File
+                    <span>→</span>
+                </span>
+            </a>
+
+            <!-- business associate agreement -->
+            <a href="business-associate-agreement" class="card salary">
+                <span class="card-badge">Business Associate Agreement</span>
+                <div class="card-icon">📋</div>
+                <h3 class="card-title">Business Associate Agreement</h3>
+                <p class="card-description">
+                    Modify and download professional Business Associate Agreement with dynamic data field.
                 </p>
                 <span class="card-link">
                     Open Tool
                     <span>→</span>
                 </span>
             </a>
-
-            <!-- Company Profile -->
-            <a href="company-profile" class="card salary">
-                <span class="card-badge">Administration</span>
-                <div class="card-icon"></div>
-                <h3 class="card-title">Company Profile</h3>
+            <a href="credentialing-services-aggrement" class="card salary">
+                <span class="card-badge">Credentialing Agreement</span>
+                <div class="card-icon">📋</div>
+                <h3 class="card-title">Credentialing  Agreement</h3>
                 <p class="card-description">
-                    Modify and download professional Company profile with dynamic data field.
+                    Modify and download professional Credentialing Agreement with dynamic data field.
                 </p>
                 <span class="card-link">
                     Open Tool
@@ -734,6 +746,18 @@ $remaining_minutes = floor($remaining_time / 60);
                 </p>
                 <span class="card-link">
                     View Reports
+                    <span>→</span>
+                </span>
+            </a>
+            <!--letterhead-->
+            <a href="letterhead" class="card settings">
+                <div class="card-icon">📄</div>
+                <h3 class="card-title">Letterhead with Template</h3>
+                <p class="card-description">
+                    This document is editable letterhead with demo content and ceo signature.
+                </p>
+                <span class="card-link">
+                    Letterhead Editor
                     <span>→</span>
                 </span>
             </a>
