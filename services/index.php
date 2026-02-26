@@ -8,7 +8,7 @@
     <!-- Services Section -->
     <section id="services">
         <div class="section-header">
-            <h2>Comprehensive Billing Solutions</h2>
+            <h2>Comprehensive Medical Billing Services</h2>
             <p>End-to-end revenue cycle management tailored to your practice's unique needs</p>
         </div>
         <div class="services-grid">

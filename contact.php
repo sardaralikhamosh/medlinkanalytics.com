@@ -51,7 +51,7 @@ include 'assets/header.php';
                     Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
                 </div>
                 <h3>Request a Consultation</h3>
-                <form id="contactForm">
+                <form id="contactForm" onsubmit="handleSubmit(event)">
                     <div class="form-group">
                         <label for="name"></label>
                         <input type="text" id="name" name="name" required placeholder="name">

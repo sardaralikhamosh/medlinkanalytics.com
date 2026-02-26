@@ -226,49 +226,50 @@
     }
 
     // Form Submission
-    function handleSubmit(event) {
-        event.preventDefault();
+    // Form Submission
+function handleSubmit(event) {
+    event.preventDefault();
+    
+    const loading = document.getElementById('loading');
+    const successMessage = document.getElementById('successMessage');
+    const form = document.getElementById('contactForm');
+    
+    loading.classList.add('active');
+    
+    const formData = new FormData(form);
+    
+    // Determine if this is homepage or contact page
+    const isHomepage = window.location.pathname === '/' || 
+                       window.location.pathname.includes('index');
+    formData.append('source', isHomepage ? 'homepage' : 'contact_page');
+    
+    // Send to submit_contact.php via AJAX
+    fetch('submit_contact.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        loading.classList.remove('active');
         
-        const loading = document.getElementById('loading');
-        const successMessage = document.getElementById('successMessage');
-        const form = document.getElementById('contactForm');
-        
-        loading.classList.add('active');
-        
-        const formData = new FormData(form);
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            practice: formData.get('practice') || 'Not provided',
-            phone: formData.get('phone') || 'Not provided',
-            message: formData.get('message')
-        };
-        
-        // Create mailto link
-        const subject = encodeURIComponent('Service Inquiry from ' + data.name);
-        const body = encodeURIComponent(
-            `Name: ${data.name}\n` +
-            `Email: ${data.email}\n` +
-            `Practice: ${data.practice}\n` +
-            `Phone: ${data.phone}\n\n` +
-            `Message:\n${data.message}`
-        );
-        
-        // Simulate sending delay
-        setTimeout(() => {
-            loading.classList.remove('active');
+        if (data.success) {
             successMessage.classList.add('active');
             form.reset();
-            
-            // Open email client
-            window.location.href = `mailto:contact@medlinkanalytics.com?subject=${subject}&body=${body}`;
             
             // Hide success message after 5 seconds
             setTimeout(() => {
                 successMessage.classList.remove('active');
             }, 5000);
-        }, 1000);
-    }
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        loading.classList.remove('active');
+        alert('An error occurred. Please try again.');
+        console.error('Error:', error);
+    });
+}
 
     // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
