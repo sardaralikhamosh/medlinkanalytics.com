@@ -315,53 +315,69 @@ include $_SERVER['DOCUMENT_ROOT'] . '/assets/header.php';
                 </div>
 
                 <div class="services-grid">
-                    <a href=".../services/rcm/medical-coding">
+                    <a href="../rcm/eligibility-verification">
                         <div class="service-card">
                         <span class="service-icon" aria-hidden="true">✅</span>
                         <h4>Insurance Eligibility Verification</h4>
                         <p>Reduce front-end claim errors through accurate patient eligibility verification before every visit.</p>
                     </div>
                     </a>
+                     <a href="../rcm/medical-coding">
                     <div class="service-card">
                         <span class="service-icon" aria-hidden="true">💻</span>
                         <h4>Medical Coding</h4>
                         <p>Our coding specialists accurately assign ICD-10-CM, CPT, and HCPCS codes while maintaining compliance with payer guidelines.</p>
                     </div>
+                    </a>
+                    <a href="../rcm/charge-entry">
                     <div class="service-card">
                         <span class="service-icon" aria-hidden="true">📋</span>
                         <h4>Charge Entry</h4>
                         <p>Accurate charge capture helps eliminate revenue leakage and ensures all services are properly billed.</p>
                     </div>
+                    </a>
+                    <a href="./claim-scrubbing">
                     <div class="service-card">
                         <span class="service-icon" aria-hidden="true">📤</span>
                         <h4>Electronic Claim Submission</h4>
                         <p>Fast and compliant claim submission through secure electronic clearinghouses with 24-48 hour turnaround.</p>
                     </div>
+                    </a>
+                    <a href="./claim-scrubbing">
                     <div class="service-card">
                         <span class="service-icon" aria-hidden="true">🧹</span>
                         <h4>Claim Scrubbing</h4>
                         <p>Claims are reviewed before submission to reduce preventable denials and improve clean claim rates.</p>
                     </div>
+                    </a>
+                    <a href="../rcm/payment-posting">
                     <div class="service-card">
                         <span class="service-icon" aria-hidden="true">💰</span>
                         <h4>Payment Posting</h4>
                         <p>Accurate ERA/EOB posting with payment reconciliation to ensure all payments are properly recorded.</p>
                     </div>
+                    </a>
+                    <a href="../revenue-cycle-management/denial-management">
                     <div class="service-card">
                         <span class="service-icon" aria-hidden="true">🛡️</span>
                         <h4>Denial Management</h4>
                         <p>We investigate, appeal, correct, and resubmit denied claims to improve reimbursement rates.</p>
                     </div>
+                    </a>
+                    <a href="../revenue-cycle-management/ar-management">
                     <div class="service-card">
                         <span class="service-icon" aria-hidden="true">📊</span>
                         <h4>Accounts Receivable Follow-up</h4>
                         <p>Persistent insurance follow-up accelerates collections and reduces aging A/R.</p>
                     </div>
+                    </a>
+                    <a href="../rcm/revenue-analytics">
                     <div class="service-card">
                         <span class="service-icon" aria-hidden="true">📈</span>
                         <h4>Revenue Cycle Analytics</h4>
                         <p>Actionable reports help providers understand financial performance and identify improvement opportunities.</p>
                     </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -378,33 +394,33 @@ include $_SERVER['DOCUMENT_ROOT'] . '/assets/header.php';
                 </div>
 
                 <div class="specialty-tags">
-                    <span class="specialty-tag">Family Medicine</span>
-                    <span class="specialty-tag">Internal Medicine</span>
-                    <span class="specialty-tag">Behavioral Health</span>
-                    <span class="specialty-tag">Mental Health</span>
-                    <span class="specialty-tag">Psychiatry</span>
-                    <span class="specialty-tag">Psychology</span>
-                    <span class="specialty-tag">Cardiology</span>
-                    <span class="specialty-tag">Pediatrics</span>
-                    <span class="specialty-tag">Neurology</span>
-                    <span class="specialty-tag">Orthopedics</span>
-                    <span class="specialty-tag">Gastroenterology</span>
-                    <span class="specialty-tag">Pain Management</span>
-                    <span class="specialty-tag">Physical Therapy</span>
-                    <span class="specialty-tag">Occupational Therapy</span>
-                    <span class="specialty-tag">Speech Therapy</span>
-                    <span class="specialty-tag">Chiropractic</span>
-                    <span class="specialty-tag">Urgent Care</span>
-                    <span class="specialty-tag">Primary Care</span>
-                    <span class="specialty-tag">Dermatology</span>
-                    <span class="specialty-tag">Endocrinology</span>
-                    <span class="specialty-tag">Rheumatology</span>
-                    <span class="specialty-tag">Nephrology</span>
-                    <span class="specialty-tag">Pulmonology</span>
-                    <span class="specialty-tag">Sleep Medicine</span>
-                    <span class="specialty-tag">Home Health</span>
-                    <span class="specialty-tag">Telehealth Providers</span>
-                    <span class="specialty-tag">Multi-Specialty Practices</span>
+                    <a href="./family-medicine-billing"><span class="specialty-tag">Family Medicine</span></a>          
+                    <a href="/medical-billing"><span class="specialty-tag">Internal Medicine</span></a>            
+                    <a href="/medical-billing"><span class="specialty-tag">Behavioral Health</span>
+        </a>            <a href="/medical-billing"><span class="specialty-tag">Mental Health</span>
+            </a>        <a href="/medical-billing"><span class="specialty-tag">Psychiatry</span>
+               </a>     <a href="/medical-billing"><span class="specialty-tag">Psychology</span>
+               </a>     <a href="/medical-billing"><span class="specialty-tag">Cardiology</span>
+               </a>     <a href="/medical-billing"><span class="specialty-tag">Pediatrics</span>
+               </a>     <a href="/medical-billing"><span class="specialty-tag">Neurology</span>
+                </a>    <a href="/medical-billing"><span class="specialty-tag">Orthopedics</span>
+              </a>      <a href="/medical-billing"><span class="specialty-tag">Gastroenterology</span>
+         </a>           <a href="/medical-billing"><span class="specialty-tag">Pain Management</span>
+          </a>          <a href="/medical-billing"><span class="specialty-tag">Physical Therapy</span>
+         </a>           <a href="/medical-billing"><span class="specialty-tag">Occupational Therapy</span>
+     </a>               <a href="/medical-billing"><span class="specialty-tag">Speech Therapy</span>
+           </a>         <a href="/medical-billing"><span class="specialty-tag">Chiropractic</span>
+             </a>       <a href="/medical-billing"><span class="specialty-tag">Urgent Care</span>
+              </a>      <a href="/medical-billing"><span class="specialty-tag">Primary Care</span>
+             </a>       <a href="/medical-billing"><span class="specialty-tag">Dermatology</span>
+              </a>      <a href="/medical-billing"><span class="specialty-tag">Endocrinology</span>
+            </a>        <a href="/medical-billing"><span class="specialty-tag">Rheumatology</span>
+             </a>       <a href="/medical-billing"><span class="specialty-tag">Nephrology</span>
+               </a>     <a href="/medical-billing"><span class="specialty-tag">Pulmonology</span>
+              </a>      <a href="/medical-billing"><span class="specialty-tag">Sleep Medicine</span>
+           </a>         <a href="/medical-billing"><span class="specialty-tag">Home Health</span>
+              </a>      <a href="/medical-billing"><span class="specialty-tag">Telehealth Providers</span>
+     </a>              <a href="/medical-billing"> <span class="specialty-tag">Multi-Specialty Practices</span></a>
                 </div>
             </div>
         </section>
